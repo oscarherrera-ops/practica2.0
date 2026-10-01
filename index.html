@@ -100,9 +100,9 @@
                     <div>
                         <span class="text-4xl mb-3 block">🇬🇧</span>
                         <h3 class="text-xl font-extrabold text-white uppercase tracking-tight">Inglés</h3>
-                        <p class="text-[0.7rem] text-violet-300 font-semibold uppercase mt-1 tracking-wider">Bilingüe: Pregunta ES / Opciones EN</p>
+                        <p class="text-[0.7rem] text-violet-300 font-semibold uppercase mt-1 tracking-wider">Viernes 2 de octubre</p>
                     </div>
-                    <p class="text-[0.68rem] text-slate-400 mt-4 leading-relaxed font-medium">House chores, match holidays and dates, months of the year in order, and ordinal numbers (1st to 10th).</p>
+                    <p class="text-[0.68rem] text-slate-400 mt-4 leading-relaxed font-medium">Getting around town (community places, prepositions: between, behind, next to, opposite, in front of, goods &amp; services) and numbers 1-100.</p>
                 </button>
             </div>
         </div>
@@ -224,7 +224,6 @@
 
     </div>
 
-    <!-- SCRIPT CENTRAL DE LA APLICACIÓN (Completamente auto-contenido e inmune a fallos de red) -->
     <script>
         window.nav = function(viewName) {
             document.querySelectorAll('.view').forEach(function(el) { el.classList.add('hidden'); });
@@ -276,13 +275,11 @@
             return Math.floor(Math.random() * (max - min + 1)) + min;
         };
 
-        var KIDS = ["Santiago", "Valentina", "Thiago", "Camila", "Mateo", "Fiorella", "Kendall", "Isabella", "Samuel", "Jimena", "Gael", "Sofía", "Sebastián", "Mariana", "Felipe", "Emma", "Esteban", "Lucía", "Alejandro", "Valeria", "Ignacio", "Fabiana", "Gabriel", "Victoria"];
-        var PLACES = ["Paraíso", "Orosi", "Tejar del Guarco", "Tierra Blanca", "Pacayas", "Cot", "Cervantes", "Dulce Nombre", "Tres Ríos", "San Rafael de Oreamuno", "Carmen de Cartago", "Llanos de Santa Lucía", "Tobosi", "Capellades"];
+        var KIDS = ["Santiago", "Valentina", "Thiago", "Camila", "Mateo", "Fiorella", "Kendall", "Isabella", "Samuel", "Jimena", "Gael", "Sofía", "Sebastián", "Mariana", "Felipe", "Emma", "Esteban", "Lucía", "Alejandro", "Valeria", "Ignacio", "Fabiana", "Gabriel", "Victoria", "Leonardo", "Paula", "Andrés", "Daniela"];
+        var PLACES = ["Paraíso", "Orosi", "Tejar del Guarco", "Tierra Blanca", "Pacayas", "Cot", "Cervantes", "Dulce Nombre", "Tres Ríos", "San Rafael de Oreamuno", "Carmen de Cartago", "Llanos de Santa Lucía", "Tobosi", "Capellades", "Taras", "El Molino"];
 
-        // BANCO PROCEDURAL DE ALTO RIGOR CON MÁS DE 20 GENERADORES INDEPENDIENTES POR MATERIA
         window.PROCEDURAL_GENERATORS = {
             "Español": [
-                // 1. Inferencia contextual
                 function() {
                     var k = window.pick(KIDS), p = window.pick(PLACES);
                     var sc = window.pick([
@@ -292,20 +289,16 @@
                     ]);
                     return { q: k + " observa que en " + p + " las personas " + sc.d + " " + p + ". ¿Cuál conclusión lógica se INFIERE del texto?", o: [sc.r, sc.w[0], sc.w[1], sc.w[2]], c: sc.r };
                 },
-                // 2. Información explícita vs implícita
                 function() {
                     var k = window.pick(KIDS), n = window.randInt(4, 9), obj = window.pick(["árboles nativos en el patio escolar", "libros de la biblioteca municipal", "lapiceros azules para el examen", "cuadernos donados a la escuela"]);
                     return { q: 'En el texto: "' + k + ' recolectó ' + n + ' ' + obj + ' el martes por la mañana". ¿Cuál opción representa información estrictamente EXPLÍCITA?', o: [k + " recolectó " + n + " " + obj, k + " es la persona más colaboradora de toda la sección", k + " no quiere volver a participar en actividades", k + " prefiere salir de paseo antes que estudiar"], c: k + " recolectó " + n + " " + obj };
                 },
-                // 3. Concepto de Inferencia
                 function() {
                     return { q: "¿En qué consiste realizar una INFERENCIA durante la comprensión de un texto?", o: ["Deducir conclusiones lógicas a partir de pistas del texto y conocimientos previos", "Copiar textualmente las mismas palabras escritas por el autor", "Contar la cantidad de renglones y palabras que tiene el escrito", "Subrayar únicamente las palabras que lleven tilde"], c: "Deducir conclusiones lógicas a partir de pistas del texto y conocimientos previos" };
                 },
-                // 4. Argumentación: Propósito
                 function() {
                     return { q: "¿Cuál es el propósito central de un texto o párrafo de tipo ARGUMENTATIVO?", o: ["Defender una postura u opinión mediante razones sólidas para convencer al lector", "Contar anécdotas humorísticas sin emitir ninguna opinión", "Dictar una receta de cocina en orden de ingredientes", "Hacer una lista de compras de útiles escolares"], c: "Defender una postura u opinión mediante razones sólidas para convencer al lector" };
                 },
-                // 5. Tesis y argumentos
                 function() {
                     var k = window.pick(KIDS);
                     var t = window.pick([
@@ -315,47 +308,38 @@
                     ]);
                     return { q: k + ' afirma: "Debemos ' + t.tema + ' ' + t.arg + '". En esta oración, la frase "' + t.arg + '" cumple la función de:', o: ["Un argumento que fundamenta y respalda su postura", "Una conclusión que contradice su propia idea", "Un conector de secuencia temporal de pasos", "Un título decorativo para el inicio del párrafo"], c: "Un argumento que fundamenta y respalda su postura" };
                 },
-                // 6. Fuentes de información confiables
                 function() {
                     var k = window.pick(KIDS), tema = window.pick(["la biodiversidad del Volcán Irazú", "la historia de la Escuela Juan Ramírez", "la conservación de las fuentes de agua en Cartago"]);
                     return { q: k + " necesita investigar con seriedad sobre " + tema + ". ¿Cuál de las siguientes representa una fuente de información CONFIABLE?", o: ["Un libro científico o informe de una universidad reconocida", "Un rumor escuchado en una parada de autobús", "Un mensaje anónimo reenviado por redes sociales", "Una adivinanza inventada por un estudiante"], c: "Un libro científico o informe de una universidad reconocida" };
                 },
-                // 7. Fuentes primarias
                 function() {
                     var k = window.pick(KIDS);
                     return { q: "Si " + k + " entrevista directamente a una abuela de la comunidad para saber cómo se vivía en Cartago hace 60 años, está consultando una fuente:", o: ["Primaria, porque obtiene el testimonio directo y de primera mano", "Secundaria, porque proviene de un libro de texto editado", "Ficticia, porque las personas mayores no recuerdan hechos", "Paralingüística, porque carece de palabras escritas"], c: "Primaria, porque obtiene el testimonio directo y de primera mano" };
                 },
-                // 8. Conectores de adición
                 function() {
                     var conn = window.pick(["además", "también", "asimismo"]);
                     var dist = window.shuffle(["porque", "primero", "por lo tanto", "luego", "ya que"]).slice(0, 3);
                     return { q: 'En la redacción: "Hoy repasamos los temas de Ciencias y, __________, practicamos los problemas de Matemáticas". ¿Cuál conector de ADICIÓN completa la idea?', o: [conn, dist[0], dist[1], dist[2]], c: conn };
                 },
-                // 9. Conectores de causalidad
                 function() {
                     var conn = window.pick(["porque", "ya que", "puesto que", "por lo tanto"]);
                     var dist = window.shuffle(["además", "primero", "asimismo", "también", "luego"]).slice(0, 3);
                     return { q: "¿Cuál de los siguientes términos corresponde a un conector de CAUSALIDAD?", o: [conn, dist[0], dist[1], dist[2]], c: conn };
                 },
-                // 10. Conectores de secuencia
                 function() {
                     var conn = window.pick(["primero", "luego", "después", "finalmente"]);
                     var dist = window.shuffle(["asimismo", "porque", "también", "puesto que"]).slice(0, 3);
                     return { q: "¿Cuál palabra funciona como un conector de SECUENCIA temporal para ordenar pasos o instrucciones?", o: [conn, dist[0], dist[1], dist[2]], c: conn };
                 },
-                // 11. Idea principal
                 function() {
                     return { q: "¿Cuál es el rol pedagógico de la IDEA PRINCIPAL dentro de un párrafo bien estructurado?", o: ["Expresar el contenido fundamental e indispensable del mensaje", "Brindar ejemplos secundarios y adornos que se pueden omitir", "Separar los sustantivos propios de los comunes", "Rimar obligatoriamente con el final del texto"], c: "Expresar el contenido fundamental e indispensable del mensaje" };
                 },
-                // 12. Ideas secundarias
                 function() {
                     return { q: "En la estructura de un párrafo, las IDEAS SECUNDARIAS cumplen la función de:", o: ["Ampliar, detallar y ejemplificar lo expresado en la idea principal", "Contradecir totalmente el mensaje del autor", "Eliminar la necesidad de colocar mayúsculas y puntos", "Servir de título al inicio de la página"], c: "Ampliar, detallar y ejemplificar lo expresado en la idea principal" };
                 },
-                // 13. Elementos lingüísticos
                 function() {
                     return { q: "Dentro del intercambio comunicativo en el aula, ¿cuál de los siguientes constituye un elemento LINGÜÍSTICO?", o: ["Las palabras orales pronunciadas y las oraciones escritas", "El tono agudo o grave de la voz", "La postura corporal del emisor al hablar", "El contacto visual mantenido hacia el público"], c: "Las palabras orales pronunciadas y las oraciones escritas" };
                 },
-                // 14. Elementos paralingüísticos y no lingüísticos
                 function() {
                     var item = window.pick([
                         { name: "el tono de voz y el volumen de modulación", tipo: "paralingüístico" },
@@ -364,7 +348,6 @@
                     ]);
                     return { q: "Durante una exposición oral en clase, " + item.name + " corresponde a un elemento:", o: [item.tipo.toUpperCase() + " que acompaña y complementa el mensaje verbal", "estrictamente ortográfico de acentuación", "exclusivo del alfabeto escrito", "de cálculo numérico decimal"], c: item.tipo.toUpperCase() + " que acompaña y complementa el mensaje verbal" };
                 },
-                // 15. Raíz o lexema
                 function() {
                     var fam = window.pick([
                         { root: "pan", words: "panadería, panadero, pancito" },
@@ -374,7 +357,6 @@
                     ]);
                     return { q: 'En la familia de palabras {' + fam.words + '}, la parte común "' + fam.root + '" representa:', o: ["La raíz o lexema que contiene el significado fundamental", "Un prefijo de negación", "Un conector de consecuencia", "Un signo de puntuación"], c: "La raíz o lexema que contiene el significado fundamental" };
                 },
-                // 16. Prefijos
                 function() {
                     var pfx = window.pick([
                         { word: "desconectar", p: "des-", m: "inversión o negación de la acción" },
@@ -384,7 +366,6 @@
                     ]);
                     return { q: 'En el término "' + pfx.word + '", la partícula inicial "' + pfx.p + '" corresponde a un PREFIJO que aporta el sentido de:', o: [pfx.m, "oficio u ocupación profesional", "diminutivo de afecto", "plural obligatorio"], c: pfx.m };
                 },
-                // 17. Sufijos
                 function() {
                     var sfx = window.pick([
                         { word: "cocinero", s: "-ero", m: "oficio, profesión u ocupación" },
@@ -394,7 +375,6 @@
                     ]);
                     return { q: 'En la palabra "' + sfx.word + '", la terminación "' + sfx.s + '" es un SUFIJO que indica:', o: [sfx.m, "negación de la raíz", "palabra primitiva sin derivados", "conector de secuencia"], c: sfx.m };
                 },
-                // 18. Plurales de palabras en -z a -ces
                 function() {
                     var pair = window.pick([
                         { s: "lápiz", p: "lápices" }, { s: "pez", p: "peces" }, { s: "nuez", p: "nueces" },
@@ -404,7 +384,6 @@
                     ]);
                     return { q: 'Según la regla ortográfica para palabras terminadas en Z, ¿cuál es el PLURAL correcto de "' + pair.s + '"?', o: [pair.p, pair.s + "s", pair.s + "es", pair.s.slice(0, -1) + "ses"], c: pair.p };
                 },
-                // 19. Campo semántico
                 function() {
                     var cs = window.pick([
                         { cat: "herramientas de carpintería", words: "serrucho, martillo, clavo, cepillo" },
@@ -414,7 +393,6 @@
                     ]);
                     return { q: 'El grupo de palabras {' + cs.words + '} pertenece a un mismo CAMPO SEMÁNTICO porque:', o: ["Comparten rasgos comunes de significado referidos a " + cs.cat, "Tienen exactamente el mismo número de letras", "Terminan todas con la letra z", "Carecen por completo de raíz"], c: "Comparten rasgos comunes de significado referidos a " + cs.cat };
                 },
-                // 20. Uso de mayúsculas
                 function() {
                     var k = window.pick(KIDS), p = window.pick(PLACES);
                     return { q: "¿Cuál de las siguientes oraciones aplica de forma impecable el uso de las MAYÚSCULAS?", o: [k + " visitó la comunidad de " + p + " el domingo pasado.", k.toLowerCase() + " visitó la comunidad de " + p.toLowerCase() + " el domingo pasado.", k + " visitó La comunidad De " + p + " el Domingo pasado.", k + " Visitó La Comunidad De " + p + " El Domingo."], c: k + " visitó la comunidad de " + p + " el domingo pasado." }
@@ -422,47 +400,39 @@
             ],
 
             "Matemáticas": [
-                // 1. Multiplicación 1 dígito con reagrupación
                 function() {
                     var a = window.randInt(245, 985), b = window.randInt(3, 9);
                     var ans = a * b;
                     var opts = window.shuffle([ans, ans + 10, ans - 10, ans + b * 2]).map(String);
                     return { q: "Al resolver en columna la multiplicación " + a + " × " + b + " agrupando unidades, ¿cuál es el producto exacto?", o: opts, c: String(ans) };
                 },
-                // 2. Multiplicación 2 dígitos paso a paso
                 function() {
                     var a = window.randInt(125, 420), b = window.randInt(12, 28);
                     var ans = a * b;
                     var opts = window.shuffle([ans, ans + 100, ans - 50, ans + 20]).map(String);
                     return { q: "Una cooperativa agrícola de Cartago empaca " + a + " cajas con " + b + " bolsas de papas cada una. ¿Cuántas bolsas hay en total al calcular " + a + " × " + b + " en columna?", o: opts, c: String(ans) };
                 },
-                // 3. Circunferencia vs círculo
                 function() {
                     return { q: "¿Cuál es la diferencia geométrica fundamental entre CÍRCULO y CIRCUNFERENCIA?", o: ["La circunferencia es el borde o línea curva cerrada y el círculo es la superficie plana interior", "El círculo es solo la orilla exterior y la circunferencia es el centro", "No existe ninguna diferencia matemática entre ambos conceptos", "La circunferencia mide el peso y el círculo los minutos"], c: "La circunferencia es el borde o línea curva cerrada y el círculo es la superficie plana interior" };
                 },
-                // 4. Radio a diámetro (d = 2r)
                 function() {
                     var r = window.randInt(6, 35), d = r * 2;
                     var k = window.pick(KIDS);
                     return { q: k + " traza con su compás una circunferencia cuyo RADIO mide exactamente " + r + " cm. ¿Cuánto mide su DIÁMETRO?", o: [d + " cm", r + " cm", (d + 2) + " cm", (r * 3) + " cm"], c: d + " cm" };
                 },
-                // 5. Diámetro a radio (r = d / 2)
                 function() {
                     var r = window.randInt(7, 45), d = r * 2;
                     return { q: "El aro de una canasta de básquetbol escolar tiene un diámetro de " + d + " cm. ¿Cuánto mide la longitud de su RADIO?", o: [r + " cm", d + " cm", (d * 2) + " cm", (r + 4) + " cm"], c: r + " cm" };
                 },
-                // 6. Masa: kg a g enteros
                 function() {
                     var kg = window.randInt(2, 9), g = kg * 1000;
                     var k = window.pick(KIDS), p = window.pick(PLACES);
                     return { q: k + " compró en la feria de " + p + " un saco con " + kg + " kilogramos (kg) de cebollas. ¿A cuántos gramos (g) equivale ese peso?", o: [g + " g", (kg * 100) + " g", (kg * 10) + " g", (g + 500) + " g"], c: g + " g" };
                 },
-                // 7. Fracciones del kilogramo: 1/2 kg
                 function() {
                     var k = window.pick(KIDS);
                     return { q: k + " necesita exactamente 1/2 kilogramo de queso Turrialba para una receta escolar. ¿A cuántos gramos (g) corresponde?", o: ["500 g", "250 g", "750 g", "1000 g"], c: "500 g" };
                 },
-                // 8. Fracciones del kilogramo: 1/4 kg y 3/4 kg
                 function() {
                     var isOneFourth = Math.random() > 0.5;
                     var frac = isOneFourth ? "1/4 kg" : "3/4 kg";
@@ -470,41 +440,34 @@
                     var dist = isOneFourth ? ["500 g", "750 g", "100 g"] : ["500 g", "250 g", "1000 g"];
                     return { q: "Al adquirir en el supermercado una bolsa con " + frac + " de fresas cultivadas en Cartago, ¿cuál es su peso en gramos?", o: [correct, dist[0], dist[1], dist[2]], c: correct };
                 },
-                // 9. Conversión de tiempo: Horas a minutos
                 function() {
                     var h = window.randInt(2, 7), m = h * 60;
                     return { q: "Un viaje escolar en autobús desde la escuela hasta el Parque Nacional Tapantí duró " + h + " horas completas. ¿A cuántos MINUTOS equivale?", o: [m + " minutos", (h * 100) + " minutos", (m + 30) + " minutos", (h * 50) + " minutos"], c: m + " minutos" };
                 },
-                // 10. Conversión de tiempo: Minutos a segundos
                 function() {
                     var m = window.randInt(2, 6), s = m * 60;
                     return { q: "En educación física, un estudiante cronometró " + m + " minutos de trote continuo. ¿A cuántos SEGUNDOS equivale ese tiempo?", o: [s + " segundos", (m * 100) + " segundos", (s + 20) + " segundos", (m * 10) + " segundos"], c: s + " segundos" };
                 },
-                // 11. Conversión de semanas a días
                 function() {
                     var w = window.randInt(3, 8), d = w * 7;
                     var k = window.pick(KIDS);
                     return { q: k + " asistirá a un taller de matemáticas durante " + w + " semanas consecutivas. ¿Cuántos DÍAS en total durará el taller?", o: [d + " días", (w * 5) + " días", (d + 3) + " días", (w * 10) + " días"], c: d + " días" };
                 },
-                // 12. Suma con pesos en gramos
                 function() {
                     var k = window.pick(KIDS);
                     return { q: k + " coloca en una balanza 1/2 kg de papas y luego añade 1/4 kg más. ¿Cuántos gramos marca la balanza en total?", o: ["750 g", "500 g", "250 g", "1000 g"], c: "750 g" };
                 },
-                // 13. Problema contextualizado de multiplicación
                 function() {
                     var cajas = window.randInt(14, 38), latas = window.randInt(12, 18);
                     var tot = cajas * latas;
                     return { q: "En el comedor de la escuela recibieron " + cajas + " cajas con " + latas + " envases de leche cada una. Al multiplicar en columna, ¿cuántos envases hay en total?", o: [tot.toString(), (tot + 10).toString(), (tot - 20).toString(), (tot + 30).toString()], c: tot.toString() };
                 },
-                // 14. Reloj analógico de manecillas
                 function() {
                     return { q: "Si la manecilla corta (horero) señala exactamente el número 4 y la manecilla larga (minutero) señala el número 12, ¿qué hora marca el reloj analógico?", o: ["Las 4:00 en punto", "Las 12:20", "Las 4:30", "Las 12:04"], c: "Las 4:00 en punto" }
                 }
             ],
 
             "Ciencias": [
-                // 1. Seres vivos por su medio: Acuático
                 function() {
                     var a = window.pick([
                         { n: "la trucha arcoíris del río Macho", t: "acuático" },
@@ -513,7 +476,6 @@
                     ]);
                     return { q: "Por el medio en que vive y se desplaza naturalmente, " + a.n + " se clasifica como un animal:", o: ["Acuático", "Terrestre puro", "Aéreo estricto", "Subterráneo"], c: "Acuático" };
                 },
-                // 2. Seres vivos por su medio: Terrestre / Aéreo-terrestre
                 function() {
                     var a = window.pick([
                         { n: "el venado cola blanca en las montañas de Costa Rica", t: "terrestre" },
@@ -522,7 +484,6 @@
                     ]);
                     return { q: "De acuerdo con el medio donde habita y realiza sus funciones biológicas, " + a.n + " corresponde a un organismo:", o: [a.t.charAt(0).toUpperCase() + a.t.slice(1), "marino abisal", "descomponedor microscópico", "abiótico sin vida"], c: a.t.charAt(0).toUpperCase() + a.t.slice(1) };
                 },
-                // 3. Alimentación: Herbívoros
                 function() {
                     var h = window.pick([
                         { n: "El perezoso de tres dedos", d: "hojas y brotes tiernos de árboles como el guarumo" },
@@ -531,12 +492,10 @@
                     ]);
                     return { q: h.n + " se alimenta exclusivamente de " + h.d + ". Por este motivo, se clasifica como un animal:", o: ["Herbívoro", "Carnívoro estricto", "Insectívoro", "Omnívoro"], c: "Herbívoro" };
                 },
-                // 4. Alimentación: Carnívoros
                 function() {
                     var c = window.pick(["El jaguar", "El manigordo u ocelote", "El puma"]);
                     return { q: c + " caza otros animales para alimentarse de su carne en las áreas silvestres protegidas de Costa Rica. Su régimen alimenticio es:", o: ["Carnívoro", "Herbívoro", "Insectívoro", "Productor vegetal"], c: "Carnívoro" };
                 },
-                // 5. Alimentación: Omnívoros
                 function() {
                     var o = window.pick([
                         { n: "El pizote", d: "frutas, semillas, huevos y pequeños animales" },
@@ -544,35 +503,28 @@
                     ]);
                     return { q: o.n + " posee una dieta variada que incluye " + o.d + ". Por lo tanto, se clasifica como:", o: ["Omnívoro", "Herbívoro exclusivo", "Insectívoro puro", "Carnívoro estricto"], c: "Omnívoro" };
                 },
-                // 6. Alimentación: Insectívoros
                 function() {
                     var ins = window.pick(["El oso hormiguero tamandúa", "El sapo común costarricense", "El murciélago insectívoro"]);
                     return { q: ins + " tiene adaptaciones especiales para capturar y comer hormigas, termitas u otros insectos. Se clasifica como:", o: ["Insectívoro", "Herbívoro", "Omnívoro", "Carnívoro de gran tamaño"], c: "Insectívoro" };
                 },
-                // 7. Componentes bióticos
                 function() {
                     var bio = window.pick(["El árbol de roble de la cordillera", "El hongo oreja de palo del bosque", "Las bacterias del suelo fértil", "La orquídea Guaria Morada"]);
                     return { q: "En el ecosistema del Parque Nacional Tapantí en Cartago, ¿cuál elemento representa un componente BIÓTICO?", o: [bio, "La roca volcánica", "La luz solar", "El aire atmosférico"], c: bio };
                 },
-                // 8. Componentes abióticos
                 function() {
                     var abio = window.pick(["El agua pura de los ríos de Orosi", "El suelo volcánico de Tierra Blanca", "El aire fresco", "La radiación y luz solar"]);
                     return { q: "En la naturaleza, un componente sin vida propia pero indispensable para que los seres vivos subsistan es un elemento ABIÓTICO como:", o: [abio, "El jaguar silvestre", "El musgo de los árboles", "El pájaro yigüirro"], c: abio };
                 },
-                // 9. Concepto de equilibrio ecológico
                 function() {
                     return { q: "¿Qué se entiende por EQUILIBRIO ECOLÓGICO o biológico en un entorno natural?", o: ["La armonía e interdependencia equilibrada entre los seres vivos y los factores abióticos de su hábitat", "La eliminación de todos los carnívoros del bosque", "Talar árboles para construir calles", "Desviar todos los ríos para secar las cuencas"], c: "La armonía e interdependencia equilibrada entre los seres vivos y los factores abióticos de su hábitat" };
                 },
-                // 10. Conservación del equilibrio
                 function() {
                     var m = window.pick(["Reforestar con especies nativas y cuidar las nacientes de agua", "No contaminar los ríos con basura ni químicos", "Respetar las vedas de caza y proteger la fauna"]);
                     return { q: "¿Cuál acción comunitaria contribuye de manera directa a conservar el equilibrio ecológico en Cartago?", o: [m, "Quemar basura al aire libre", "Cazar venados en reservas naturales", "Lanzar residuos plásticos al alcantarillado"], c: m };
                 },
-                // 11. Concepto de energía
                 function() {
                     return { q: "En las ciencias naturales, ¿cómo se define formalmente la ENERGÍA?", o: ["La capacidad que posee un cuerpo o sistema para producir trabajo, movimiento o transformaciones", "El peso de un objeto medido en kilogramos", "La línea curva de una circunferencia", "El listado de quehaceres de una casa"], c: "La capacidad que posee un cuerpo o sistema para producir trabajo, movimiento o transformaciones" };
                 },
-                // 12. Fuentes de energía
                 function() {
                     var e = window.pick([
                         { t: "Eólica", s: "la fuerza del viento mediante aerogeneradores" },
@@ -581,7 +533,6 @@
                     ]);
                     return { q: "La fuente de energía limpia que se aprovecha directamente a partir de " + e.s + " se denomina:", o: ["Energía " + e.t, "Energía de Petróleo", "Energía Nuclear", "Energía de Carbón"], c: "Energía " + e.t };
                 },
-                // 13. Máquinas simples
                 function() {
                     var m = window.pick([
                         { n: "La polea", d: "una rueda acanalada por donde pasa una cuerda para elevar cargas pesadas" },
@@ -591,49 +542,39 @@
                     ]);
                     return { q: "La máquina simple que consiste en " + m.d + " corresponde a:", o: [m.n, "El motor de gasolina", "La computadora portátil", "El microondas"], c: m.n };
                 },
-                // 14. Máquinas compuestas
                 function() {
                     return { q: "¿Cuál de los siguientes objetos representa una MÁQUINA COMPUESTA formada por la integración de varias máquinas simples?", o: ["La bicicleta (con ruedas, ejes, cadenas y palancas de freno)", "Una simple barra de hierro apoyada en una piedra", "Una tabla de madera inclinada en la acera", "Un tornillo metálico individual"], c: "La bicicleta (con ruedas, ejes, cadenas y palancas de freno)" };
                 }
             ],
 
             "Estudios Sociales": [
-                // 1. Patrimonio cultural tangible
                 function() {
                     var p = window.pick(["La Escuela Juan Ramírez Ramírez (edificio arquitectónico patrimonial de 1912)", "La Basílica de Nuestra Señora de los Ángeles", "Las Ruinas de la Parroquia Santiago Apóstol en Cartago"]);
                     return { q: p + " forma parte del tesoro de nuestra provincia clasificado como:", o: ["Patrimonio cultural tangible arquitectónico", "Patrimonio cultural intangible", "Patrimonio natural no vivo", "Efeméride deportiva"], c: "Patrimonio cultural tangible arquitectónico" };
                 },
-                // 2. Patrimonio cultural intangible
                 function() {
                     var p = window.pick(["El idioma español con giros propios costarricenses", "Las leyendas populares como La Segua y El Cadejos", "Las danzas folclóricas del punto guanacasteco y el calipso", "La tradición oral y las recetas de comidas típicas"]);
                     return { q: p + " se transmite de generación en generación y pertenece al:", o: ["Patrimonio cultural intangible", "Patrimonio cultural tangible edificado", "Patrimonio de flora silvestre", "Relieve costero"], c: "Patrimonio cultural intangible" };
                 },
-                // 3. Patrimonio natural
                 function() {
                     var pn = window.pick(["El Parque Nacional Volcán Irazú y sus paisajes", "El Parque Nacional Tapantí y sus cuencas de agua", "Los senderos boscosos de la Cordillera de Talamanca"]);
                     return { q: pn + " en nuestra provincia y país constituye un ejemplo destacado de:", o: ["Patrimonio natural de gran belleza escénica y biodiversidad", "Patrimonio arquitectónico construido por el ser humano", "Patrimonio cultural intangible", "Efeméride del mes de julio"], c: "Patrimonio natural de gran belleza escénica y biodiversidad" };
                 },
-                // 4. Anexión del Partido de Nicoya (25 de julio)
                 function() {
                     return { q: 'El 25 de julio conmemoramos un hecho histórico de 1824 bajo el célebre lema patriótico "De la patria por nuestra voluntad". ¿Qué efeméride se celebra?', o: ["La Anexión del Partido de Nicoya a Costa Rica", "La Independencia de Centroamérica", "El Día de la Fundación de la República", "La Batalla de Santa Rosa"], c: "La Anexión del Partido de Nicoya a Costa Rica" };
                 },
-                // 5. Aportes de Guanacaste
                 function() {
                     return { q: "¿Cuáles comidas y tradiciones representan un valioso aporte cultural de Guanacaste a Costa Rica?", o: ["Las chorreadas, el tamal asado, el pozol y la música de marimba", "El rice and beans, el pati y el pan bon", "El picadillo de papa con tortilla de queso", "Las hamburguesas y papas fritas"], c: "Las chorreadas, el tamal asado, el pozol y la música de marimba" };
                 },
-                // 6. Día de la Persona Negra (31 de agosto)
                 function() {
                     return { q: "Cada 31 de agosto Costa Rica conmemora el Día de la Persona Negra y la Cultura Afrocostarricense. ¿Cuál es un valioso aporte de esta cultura?", o: ["El calipso, platillos como el rice and beans y el legado del ferrocarril al Caribe", "El baile de la yegüita de Nicoya", "El cultivo del trigo en Cartago", "La carreta típica pintada"], c: "El calipso, platillos como el rice and beans y el legado del ferrocarril al Caribe" };
                 },
-                // 7. Fiestas Patrias del 14 de setiembre
                 function() {
                     return { q: "El 14 de setiembre a las 6:00 p.m. en todo el país y en la Escuela Juan Ramírez, la tradición cívica nos convoca para:", o: ["Entonar el Himno Nacional con fervor y participar en el desfile de faroles", "Comer uvas y esperar la medianoche de año nuevo", "Sembrar un árbol frutal en el patio", "Celebrar el Día del Trabajador"], c: "Entonar el Himno Nacional con fervor y participar en el desfile de faroles" };
                 },
-                // 8. Independencia de Costa Rica (15 de setiembre de 1821)
                 function() {
                     return { q: "¿Qué hecho histórico conmemora Costa Rica cada 15 de setiembre desde el año 1821?", o: ["Nuestra Independencia patria", "La Anexión de Nicoya", "La Batalla de Rivas", "La Campaña Nacional de 1856"], c: "Nuestra Independencia patria" };
                 },
-                // 9. Símbolos Nacionales: Fauna
                 function() {
                     var s = window.pick([
                         { n: "El Yigüirro", t: "Ave Nacional de Costa Rica por su canto anunciador de lluvias" },
@@ -643,7 +584,6 @@
                     ]);
                     return { q: "En el grupo de Símbolos Nacionales de Costa Rica, " + s.n + " fue declarado como:", o: [s.t, "Monumento arquitectónico de Cartago", "Danza folclórica de Guanacaste", "Patrimonio intangible oral"], c: s.t };
                 },
-                // 10. Símbolos Nacionales: Flora y Tradición
                 function() {
                     var s = window.pick([
                         { n: "La Guaria Morada", t: "Flor Nacional de Costa Rica" },
@@ -656,121 +596,427 @@
             ],
 
             "Inglés": [
-                // 1. House chores: wash the dishes
+                // 1. Community places: Function & action
                 function() {
-                    var k = window.pick(KIDS);
-                    return { q: "Después de almorzar, " + k + " ayuda en la cocina lavando los platos, vasos y cubiertos en el fregadero. ¿Qué quehacer doméstico en inglés realiza?", o: ["wash the dishes", "cook", "iron", "walk the dog"], c: "wash the dishes" };
-                },
-                // 2. House chores: wash the clothes
-                function() {
-                    var k = window.pick(KIDS);
-                    return { q: "Los uniformes escolares de " + k + " están sucios y deben colocarse en la lavadora con jabón. ¿Qué tarea del hogar en inglés corresponde?", o: ["wash the clothes", "vacuum", "cook", "iron"], c: "wash the clothes" };
-                },
-                // 3. House chores: iron
-                function() {
-                    var k = window.pick(KIDS);
-                    return { q: "La camisa escolar de " + k + " está seca pero llena de arrugas, por lo que utiliza una plancha caliente para alisarla. ¿Qué acción realiza?", o: ["iron", "wash the dishes", "cook", "vacuum"], c: "iron" };
-                },
-                // 4. House chores: cook
-                function() {
-                    var k = window.pick(KIDS);
-                    return { q: "En la cocina, " + k + " y su familia preparan los alimentos al fuego en ollas y sartenes para la cena. ¿Qué quehacer en inglés ejecutan?", o: ["cook", "walk the dog", "vacuum", "iron"], c: "cook" };
-                },
-                // 5. House chores: walk the dog
-                function() {
-                    var k = window.pick(KIDS);
-                    return { q: "La mascota de " + k + " necesita salir a caminar al parque para ejercitarse y pasear. ¿Cuál tarea en inglés corresponde?", o: ["walk the dog", "cook", "wash the dishes", "iron"], c: "walk the dog" };
-                },
-                // 6. House chores: vacuum
-                function() {
-                    var k = window.pick(KIDS);
-                    return { q: "La alfombra de la sala tiene polvo y migajas. " + k + " enciende la aspiradora eléctrica para limpiarla. ¿Qué acción en inglés realiza?", o: ["vacuum", "wash the clothes", "cook", "walk the dog"], c: "vacuum" };
-                },
-                // 7. Holidays: Independence Day
-                function() {
-                    return { q: "En Costa Rica celebramos con desfiles y faroles el Día de la Independencia (Independence Day). ¿Cuál fecha en inglés le corresponde?", o: ["September 15th", "December 25th", "April 11th", "July 25th"], c: "September 15th" };
-                },
-                // 8. Holidays: Christmas
-                function() {
-                    return { q: "La festividad familiar de Navidad (Christmas) se conmemora en el calendario con la fecha en inglés:", o: ["December 25th", "January 1st", "August 15th", "May 1st"], c: "December 25th" };
-                },
-                // 9. Holidays: Juan Santamaría Day
-                function() {
-                    return { q: "El Día de Juan Santamaría (Juan Santamaría Day) conmemora al héroe nacional alajuelense. ¿Cuál es su fecha correspondiente en inglés?", o: ["April 11th", "April 15th", "May 1st", "August 2nd"], c: "April 11th" };
-                },
-                // 10. Holidays: Mother's Day
-                function() {
-                    return { q: "El Día de la Madre (Mother's Day) en Costa Rica es una fecha muy especial para homenajear a mamá. ¿En cuál fecha en inglés se celebra?", o: ["August 15th", "August 2nd", "July 25th", "September 15th"], c: "August 15th" };
-                },
-                // 11. Holidays: Annexation of Nicoya
-                function() {
-                    return { q: "La Anexión del Partido de Nicoya (Annexation of Nicoya) es una gran fiesta folclórica patria. ¿A cuál fecha en inglés corresponde?", o: ["July 25th", "July 15th", "June 25th", "August 2nd"], c: "July 25th" };
-                },
-                // 12. Holidays: New Year's Day
-                function() {
-                    return { q: "El primer día del año, conocido en inglés como New Year's Day, se conmemora en la fecha:", o: ["January 1st", "December 31st", "February 1st", "January 10th"], c: "January 1st" };
-                },
-                // 13. Holidays: Our Lady of Los Angeles Day
-                function() {
-                    return { q: "La tradicional fiesta y romería de la Virgen de los Ángeles (Our Lady of Los Angeles Day) en Cartago se celebra en la fecha:", o: ["August 2nd", "August 15th", "July 25th", "September 14th"], c: "August 2nd" };
-                },
-                // 14. Holidays: Labor Day
-                function() {
-                    return { q: "El Día del Trabajador (Labor Day) es un feriado conmemorado en la fecha en inglés:", o: ["May 1st", "May 15th", "April 11th", "June 1st"], c: "May 1st" };
-                },
-                // 15. Ordinal numbers: 1st to 5th
-                function() {
-                    var o = window.pick([
-                        { es: "primer (1°)", en: "1st" },
-                        { es: "segundo (2°)", en: "2nd" },
-                        { es: "tercer (3°)", en: "3rd" },
-                        { es: "cuarto (4°)", en: "4th" },
-                        { es: "quinto (5°)", en: "5th" }
+                    var place = window.pick([
+                        { d: "las personas enfermas reciben atención médica inmediata de doctores y enfermeras", r: "hospital", w: ["bakery", "library", "police station"] },
+                        { d: "los niños asisten para aprender lecciones, leer y compartir con su maestro", r: "school", w: ["supermarket", "bank", "fire station"] },
+                        { d: "las familias compran alimentos frescos, frutas, verduras y productos envasados", r: "supermarket", w: ["pharmacy", "park", "church"] },
+                        { d: "los bomberos guardan sus camiones, mangueras y escaleras para extinguir fuegos", r: "fire station", w: ["restaurant", "library", "school"] },
+                        { d: "los oficiales de policía protegen a los ciudadanos y mantienen el orden público en la comunidad", r: "police station", w: ["bakery", "park", "hospital"] },
+                        { d: "las personas compran pan recién horneado, pasteles y galletas", r: "bakery", w: ["bank", "pharmacy", "supermarket"] },
+                        { d: "podemos pedir prestados libros interesantes y estudiar en un ambiente de silencio", r: "library", w: ["restaurant", "fire station", "bus station"] },
+                        { d: "las personas guardan sus ahorros de dinero y realizan retiros o depósitos bancarios", r: "bank", w: ["park", "bakery", "school"] },
+                        { d: "compramos jarabes, pastillas y medicamentos recetados por el médico", r: "pharmacy", w: ["supermarket", "church", "library"] },
+                        { d: "los niños juegan en los columpios, corren sobre el césped y disfrutan al aire libre", r: "park", w: ["hospital", "bank", "police station"] },
+                        { d: "las personas envían sobres, cartas y paquetes postales por correo", r: "post office", w: ["cinema", "bakery", "library"] },
+                        { d: "los comensales disfrutan de deliciosos platillos preparados por cocineros y servidos por meseros", r: "restaurant", w: ["police station", "bank", "supermarket"] },
+                        { d: "los pasajeros esperan y abordan autobuses para viajar a diferentes pueblos de Cartago", r: "bus station", w: ["pharmacy", "school", "bakery"] },
+                        { d: "la comunidad asiste a servicios religiosos, bodas y momentos de oración espiritual", r: "church", w: ["fire station", "supermarket", "post office"] }
                     ]);
                     var k = window.pick(KIDS);
-                    var wrong = ["1st", "2nd", "3rd", "4th", "5th"].filter(function(x) { return x !== o.en; }).slice(0, 3);
-                    return { q: "En una competencia atlética de la Escuela Juan Ramírez, " + k + " obtuvo el " + o.es + " lugar. ¿Cómo se escribe ese número ordinal en inglés?", o: [o.en, wrong[0], wrong[1], wrong[2]], c: o.en };
+                    return { q: k + " camina por el pueblo y necesita un lugar donde " + place.d + ". ¿A cuál lugar de la comunidad (community place) en inglés corresponde?", o: window.shuffle([place.r, place.w[0], place.w[1], place.w[2]]), c: place.r };
                 },
-                // 16. Ordinal numbers: 6th to 10th
+
+                // 2. Community places: Professions & workers
                 function() {
-                    var o = window.pick([
-                        { es: "sexto (6°)", en: "6th" },
-                        { es: "séptimo (7°)", en: "7th" },
-                        { es: "octavo (8°)", en: "8th" },
-                        { es: "noveno (9°)", en: "9th" },
-                        { es: "décimo (10°)", en: "10th" }
+                    var worker = window.pick([
+                        { w: "A brave firefighter uses high-pressure hoses and safety gear to rescue people and put out fires", p: "fire station", dist: ["bakery", "police station", "library"] },
+                        { w: "A kind doctor examines sick children and prescribes medicines to cure them", p: "hospital", dist: ["supermarket", "bank", "school"] },
+                        { w: "A dedicated police officer protects neighborhoods and regulates vehicular traffic", p: "police station", dist: ["park", "pharmacy", "bakery"] },
+                        { w: "A talented baker makes fresh baguettes, croissants, and birthday cakes every morning", p: "bakery", dist: ["library", "bank", "fire station"] },
+                        { w: "A friendly librarian catalogs encyclopedias and helps students locate reading materials", p: "library", dist: ["post office", "hospital", "bus station"] },
+                        { w: "A cashier or bank teller helps customers deposit currency and check account balances", p: "bank", dist: ["park", "pharmacy", "church"] },
+                        { w: "A helpful pharmacist dispenses tablets, syrups, and medical supplies to patients", p: "pharmacy", dist: ["restaurant", "police station", "park"] }
                     ]);
-                    var wrong = ["6th", "7th", "8th", "9th", "10th"].filter(function(x) { return x !== o.en; }).slice(0, 3);
-                    return { q: 'Al indicar posiciones en inglés, ¿cuál abreviatura corresponde al número ordinal "' + o.es + '"?', o: [o.en, wrong[0], wrong[1], wrong[2]], c: o.en };
+                    return { q: 'En el vecindario leemos: "' + worker.w + '". ¿En cuál edificio o lugar de la comunidad en inglés trabaja esta persona?', o: window.shuffle([worker.p, worker.dist[0], worker.dist[1], worker.dist[2]]), c: worker.p };
                 },
-                // 17. Months in order
+
+                // 3. Prepositions of location: BETWEEN
                 function() {
-                    var series = window.pick([
-                        { cor: "January, February, March", w1: "February, January, March", w2: "March, February, January", w3: "January, March, February" },
-                        { cor: "April, May, June", w1: "May, April, June", w2: "June, May, April", w3: "April, June, May" },
-                        { cor: "July, August, September", w1: "August, July, September", w2: "September, August, July", w3: "July, September, August" },
-                        { cor: "October, November, December", w1: "November, October, December", w2: "December, November, October", w3: "October, December, November" }
+                    var k = window.pick(KIDS);
+                    var placesList = window.shuffle(["the school", "the bank", "the pharmacy", "the park", "the hospital", "the supermarket", "the bakery"]);
+                    var pTarget = placesList[0], pLeft = placesList[1], pRight = placesList[2];
+                    return {
+                        q: 'En el mapa escolar de ' + k + ', ' + pTarget + ' está situado en medio exacto de ' + pLeft + ' y ' + pRight + '. Complete la oración: "' + pTarget.charAt(0).toUpperCase() + pTarget.slice(1) + ' is __________ ' + pLeft + ' and ' + pRight + '."',
+                        o: ["between", "behind", "next to", "in front of"],
+                        c: "between"
+                    };
+                },
+
+                // 4. Prepositions of location: NEXT TO
+                function() {
+                    var k = window.pick(KIDS);
+                    var p1 = window.pick(["The bakery", "The pharmacy", "The bank", "The police station", "The restaurant", "The library"]);
+                    var p2 = window.pick(["the supermarket", "the school", "the hospital", "the park", "the fire station"]);
+                    return {
+                        q: k + ' observa en el croquis comunal que ' + p1.toLowerCase() + ' está construido a la par (al lado directo, compartiendo acera) de ' + p2 + '. ¿Cuál preposición de lugar completa: "' + p1 + ' is __________ ' + p2 + '"?',
+                        o: ["next to", "between", "behind", "in front of"],
+                        c: "next to"
+                    };
+                },
+
+                // 5. Prepositions of location: BEHIND
+                function() {
+                    var k = window.pick(KIDS);
+                    var elem = window.pick([
+                        { item: "the soccer field", base: "the school", es: "el campo de fútbol está ubicado en la parte trasera (detrás) del edificio escolar" },
+                        { item: "the parking lot", base: "the hospital", es: "el estacionamiento de ambulancias está situado en la parte posterior (detrás) del hospital" },
+                        { item: "the fruit garden", base: "the house", es: "el huerto de frutas está sembrado justo detrás de la casa familiar" }
                     ]);
-                    return { q: "¿Cuál de las siguientes opciones presenta tres meses del año en estricto y correcto ORDEN CRONOLÓGICO en inglés?", o: [series.cor, series.w1, series.w2, series.w3], c: series.cor };
+                    return {
+                        q: k + ' revisa el plano donde ' + elem.es + '. ¿Cuál preposición en inglés completa: "' + elem.item.charAt(0).toUpperCase() + elem.item.slice(1) + ' is __________ ' + elem.base + '"?',
+                        o: ["behind", "in front of", "opposite", "between"],
+                        c: "behind"
+                    };
+                },
+
+                // 6. Prepositions of location: IN FRONT OF
+                function() {
+                    var k = window.pick(KIDS);
+                    var scenario = window.pick([
+                        { a: "The bus stop", b: "the main hospital entrance", es: "la parada de autobús está situada exactamente delante de la entrada principal del hospital" },
+                        { a: "The statue", b: "the community church", es: "el monumento conmemorativo se ubica justo al frente (delante) de la iglesia comunal" },
+                        { a: "The school sign", b: "the entrance gate", es: "el letrero de bienvenida escolar se encuentra ubicado directamente enfrente del portón" }
+                    ]);
+                    return {
+                        q: 'En el dibujo del pueblo de ' + k + ', ' + scenario.es + '. Complete la oración: "' + scenario.a + ' is __________ ' + scenario.b + '."',
+                        o: ["in front of", "behind", "between", "opposite"],
+                        c: "in front of"
+                    };
+                },
+
+                // 7. Prepositions of location: OPPOSITE
+                function() {
+                    var k = window.pick(KIDS);
+                    var p1 = window.pick(["The bank", "The central park", "The municipal library", "The bakery"]);
+                    var p2 = window.pick(["the school", "the supermarket", "the police station", "the pharmacy"]);
+                    return {
+                        q: k + ' nota que ' + p1.toLowerCase() + ' está al otro lado de la avenida principal, cara a cara cruzando la calle respecto a ' + p2 + '. ¿Cuál preposición de ubicación en inglés completa: "' + p1 + ' is __________ ' + p2 + '"?',
+                        o: ["opposite", "behind", "between", "next to"],
+                        c: "opposite"
+                    };
+                },
+
+                // 8. Spatial logic & inverse directions
+                function() {
+                    var pair = window.pick([
+                        { dir1: "in front of", dir2: "behind", obj1: "the library", obj2: "the city hall" },
+                        { dir1: "behind", dir2: "in front of", obj1: "the playground", obj2: "the primary school" },
+                        { dir1: "next to", dir2: "next to", obj1: "the bookstore", obj2: "the coffee shop" }
+                    ]);
+                    return {
+                        q: 'Analice la lógica espacial del croquis: Si "' + pair.obj1 + ' is ' + pair.dir1 + ' ' + pair.obj2 + '", entonces se deduce de forma indiscutible que: "' + pair.obj2 + ' is __________ ' + pair.obj1 + '".',
+                        o: [pair.dir2, "between", "opposite", pair.dir2 === "behind" ? "next to" : "behind"],
+                        c: pair.dir2
+                    };
+                },
+
+                // 9. Giving directions / Street Map comprehension
+                function() {
+                    var k = window.pick(KIDS);
+                    return {
+                        q: k + ' lee las indicaciones en el mapa: "Walk straight along Avenue 2. The post office is on the corner, and the bank is located in the middle of the post office and the pharmacy." ¿Cuál conclusión geográfica en inglés es correcta?',
+                        o: ["The bank is between the post office and the pharmacy", "The bank is behind the post office", "The bank is opposite the pharmacy", "The bank is in front of the town"],
+                        c: "The bank is between the post office and the pharmacy"
+                    };
+                },
+
+                // 10. Goods vs Services: Concept of Goods
+                function() {
+                    return {
+                        q: 'En la lección de estudios comunales en inglés, ¿cómo se define formalmente el concepto de "GOODS" (bienes)?',
+                        o: ["Physical objects and tangible items that are manufactured or grown, which people can touch, see, and buy", "Non-physical actions, labor, or duties executed by individuals to assist others", "Public parks and recreational zones created by the municipality", "Prepositions that explain the position of buildings on a municipal blueprint"],
+                        c: "Physical objects and tangible items that are manufactured or grown, which people can touch, see, and buy"
+                    };
+                },
+
+                // 11. Goods vs Services: Concept of Services
+                function() {
+                    return {
+                        q: 'Dentro del vocabulario económico de la comunidad en inglés, ¿cómo se define con precisión el término "SERVICES" (servicios)?',
+                        o: ["Tasks, skills, professional work, or assistance carried out by workers to help other people", "Material products that a buyer places inside a grocery cart and owns permanently", "Streets and crosswalks designed for bicycle transport", "Coins and monetary bills used strictly for school donations"],
+                        c: "Tasks, skills, professional work, or assistance carried out by workers to help other people"
+                    };
+                },
+
+                // 12. Goods vs Services: Identify a Good
+                function() {
+                    var good = window.pick([
+                        "A wooden study desk", "A leather soccer ball", "A fresh loaf of whole wheat bread", 
+                        "A pair of running shoes", "A stainless steel water bottle", "An illustrated English dictionary",
+                        "A colorful pencil case", "A box of fruit juice"
+                    ]);
+                    var services = window.shuffle([
+                        "A haircut provided by a local barber", "A veterinary checkup for a pet dog", 
+                        "Bus transportation across town by a driver", "Police patrolling for community safety", 
+                        "A dental cleaning performed by a dentist", "Plumbing repair on a broken water pipe"
+                    ]).slice(0, 3);
+                    return {
+                        q: "¿Cuál de los siguientes elementos de la comunidad corresponde de forma indiscutible a un BIEN TANGIBLE (GOOD)?",
+                        o: window.shuffle([good, services[0], services[1], services[2]]),
+                        c: good
+                    };
+                },
+
+                // 13. Goods vs Services: Identify a Service
+                function() {
+                    var service = window.pick([
+                        "Medical treatment provided by a physician", "Car engine repair executed by an experienced mechanic", 
+                        "Teaching mathematical algorithms by an educator", "Package delivery to your doorstep by a courier", 
+                        "House painting carried out by a professional painter", "Hair styling and cutting at a salon"
+                    ]);
+                    var goods = window.shuffle([
+                        "A wool winter sweater", "A pair of denim jeans", "A plastic ruler", 
+                        "A ceramic coffee mug", "A pack of colored pencils", "A notebook with lined pages"
+                    ]).slice(0, 3);
+                    return {
+                        q: "¿Cuál de las siguientes actividades económicas desarrolladas en el cantón se clasifica estrictamente como un SERVICIO (SERVICE)?",
+                        o: window.shuffle([service, goods[0], goods[1], goods[2]]),
+                        c: service
+                    };
+                },
+
+                // 14. Goods vs Services: Practical situational analysis
+                function() {
+                    var scenario = window.pick([
+                        { act: "comprar una barra de pan campesino recién horneado en la panadería", exp: "A good, because it is an edible, physical product that you purchase and own" },
+                        { act: "pagar el pasaje para trasladarse en el autobús de la ruta de Cartago", exp: "A service, because the driver provides the professional action of transport" },
+                        { act: "asistir al consultorio odontológico para una limpieza dental", exp: "A service, because the dentist applies expert medical knowledge and skills" },
+                        { act: "adquirir una cartuchera nueva con cremallera en la librería", exp: "A good, because it is a manufactured item you can hold in your hands" }
+                    ]);
+                    return {
+                        q: 'Cuando un estudiante decide ' + scenario.act + ', en inglés está interactuando con:',
+                        o: [scenario.exp, "A preposition of orientation on a community blueprint", "A physical landmark devoid of commercial value", "An ordinal number indicator"],
+                        c: scenario.exp
+                    };
+                },
+
+                // 15. Goods vs Services: Discrimination of odd item
+                function() {
+                    var isFindingGood = Math.random() > 0.5;
+                    if (isFindingGood) {
+                        var goodItem = window.pick(["A box of crayons", "A rain jacket", "A fresh orange", "A toy airplane"]);
+                        var servs = window.shuffle(["Taxi ride", "Guitar lessons", "Dental checkup"]).slice(0, 3);
+                        return {
+                            q: 'Analice la siguiente lista de actividades: [' + servs[0] + ', ' + goodItem + ', ' + servs[1] + ', ' + servs[2] + ']. ¿Cuál representa el ÚNICO elemento clasificado como un BIEN (GOOD)?',
+                            o: window.shuffle([goodItem, servs[0], servs[1], servs[2]]),
+                            c: goodItem
+                        };
+                    } else {
+                        var servItem = window.pick(["Car wash", "Medical consultation", "Haircut", "Dog grooming"]);
+                        var gds = window.shuffle(["A loaf of bread", "A backpack", "An umbrella"]).slice(0, 3);
+                        return {
+                            q: 'Examine el siguiente grupo: [' + gds[0] + ', ' + gds[1] + ', ' + servItem + ', ' + gds[2] + ']. ¿Cuál opción representa el ÚNICO SERVICIO (SERVICE)?',
+                            o: window.shuffle([servItem, gds[0], gds[1], gds[2]]),
+                            c: servItem
+                        };
+                    }
+                },
+
+                // 16. Numbers 1 to 100: Multiples of Ten
+                function() {
+                    var item = window.pick([
+                        { d: 20, w: "twenty", dist: ["twelve", "thirty", "two"] },
+                        { d: 30, w: "thirty", dist: ["thirteen", "forty", "twenty"] },
+                        { d: 40, w: "forty", dist: ["fourteen", "four", "fifty"] },
+                        { d: 50, w: "fifty", dist: ["fifteen", "five", "sixty"] },
+                        { d: 60, w: "sixty", dist: ["sixteen", "six", "seventy"] },
+                        { d: 70, w: "seventy", dist: ["seventeen", "seven", "eighty"] },
+                        { d: 80, w: "eighty", dist: ["eighteen", "eight", "ninety"] },
+                        { d: 90, w: "ninety", dist: ["nineteen", "nine", "eighty"] },
+                        { d: 100, w: "one hundred", dist: ["ten", "one thousand", "one hundredth"] }
+                    ]);
+                    var k = window.pick(KIDS);
+                    return {
+                        q: k + ' contabiliza exactamente ' + item.d + ' pupitres en el salón escolar. ¿Cómo se escribe de forma correcta el número ' + item.d + ' en inglés?',
+                        o: window.shuffle([item.w, item.dist[0], item.dist[1], item.dist[2]]),
+                        c: item.w
+                    };
+                },
+
+                // 17. Numbers 1 to 100: Compound numbers with hyphen
+                function() {
+                    var tens = [
+                        { d: 20, w: "twenty" }, { d: 30, w: "thirty" }, { d: 40, w: "forty" },
+                        { d: 50, w: "fifty" }, { d: 60, w: "sixty" }, { d: 70, w: "seventy" },
+                        { d: 80, w: "eighty" }, { d: 90, w: "ninety" }
+                    ];
+                    var units = [
+                        { d: 1, w: "one" }, { d: 2, w: "two" }, { d: 3, w: "three" },
+                        { d: 4, w: "four" }, { d: 5, w: "five" }, { d: 6, w: "six" },
+                        { d: 7, w: "seven" }, { d: 8, w: "eight" }, { d: 9, w: "nine" }
+                    ];
+                    var t = window.pick(tens);
+                    var u = window.pick(units);
+                    var total = t.d + u.d;
+                    var correct = t.w + "-" + u.w;
+
+                    var otherUnits = units.filter(function(x) { return x.d !== u.d; });
+                    var otherTens = tens.filter(function(x) { return x.d !== t.d; });
+                    var fake1 = t.w + "-" + window.pick(otherUnits).w;
+                    var fake2 = window.pick(otherTens).w + "-" + u.w;
+                    var fake3 = t.w + "teen";
+
+                    var k = window.pick(KIDS);
+                    return {
+                        q: k + ' coleccionó un total de ' + total + ' calcomanías de paisajes comunales. ¿Cuál es la escritura ortográfica correcta del número ' + total + ' en inglés?',
+                        o: window.shuffle([correct, fake1, fake2, fake3]),
+                        c: correct
+                    };
+                },
+
+                // 18. Numbers 1 to 100: Word to Digits
+                function() {
+                    var pool = [
+                        { w: "twenty-three", d: "23", dist: ["32", "20", "13"] },
+                        { w: "thirty-eight", d: "38", dist: ["83", "30", "18"] },
+                        { w: "forty-five", d: "45", dist: ["54", "40", "15"] },
+                        { w: "fifty-two", d: "52", dist: ["25", "50", "12"] },
+                        { w: "sixty-seven", d: "67", dist: ["76", "60", "17"] },
+                        { w: "seventy-four", d: "74", dist: ["47", "70", "14"] },
+                        { w: "eighty-nine", d: "89", dist: ["98", "80", "19"] },
+                        { w: "ninety-one", d: "91", dist: ["19", "90", "11"] },
+                        { w: "forty-one", d: "41", dist: ["14", "40", "44"] },
+                        { w: "seventy-six", d: "76", dist: ["67", "70", "16"] },
+                        { w: "ninety-eight", d: "98", dist: ["89", "90", "18"] },
+                        { w: "thirty-six", d: "36", dist: ["63", "30", "16"] }
+                    ];
+                    var item = window.pick(pool);
+                    return {
+                        q: 'Al leer en voz alta la expresión numérica en inglés "' + item.w + '", ¿a cuál cifra en dígitos arábigos corresponde?',
+                        o: window.shuffle([item.d, item.dist[0], item.dist[1], item.dist[2]]),
+                        c: item.d
+                    };
+                },
+
+                // 19. Numbers 1 to 100: Irregular teen numbers (11 to 19)
+                function() {
+                    var teen = window.pick([
+                        { d: 11, w: "eleven", dist: ["twelve", "one", "ten"] },
+                        { d: 12, w: "twelve", dist: ["eleven", "twenty", "two"] },
+                        { d: 13, w: "thirteen", dist: ["thirty", "three", "fifteen"] },
+                        { d: 14, w: "fourteen", dist: ["forty", "four", "fifteen"] },
+                        { d: 15, w: "fifteen", dist: ["fifty", "five", "thirteen"] },
+                        { d: 16, w: "sixteen", dist: ["sixty", "six", "seventeen"] },
+                        { d: 17, w: "seventeen", dist: ["seventy", "seven", "sixteen"] },
+                        { d: 18, w: "eighteen", dist: ["eighty", "eight", "nineteen"] },
+                        { d: 19, w: "nineteen", dist: ["ninety", "nine", "eighteen"] }
+                    ]);
+                    return {
+                        q: '¿Cuál es la forma correcta de escribir en inglés el número ' + teen.d + '?',
+                        o: window.shuffle([teen.w, teen.dist[0], teen.dist[1], teen.dist[2]]),
+                        c: teen.w
+                    };
+                },
+
+                // 20. Numbers 1 to 100: Numerical Sequences
+                function() {
+                    var seq = window.pick([
+                        { s: "ten, twenty, thirty, forty, _______", next: "fifty", dist: ["sixty", "fifteen", "forty-one"] },
+                        { s: "thirty, forty, fifty, sixty, _______", next: "seventy", dist: ["eighty", "sixteen", "seventeen"] },
+                        { s: "fifty, sixty, seventy, eighty, _______", next: "ninety", dist: ["one hundred", "eighty-one", "seventy-five"] },
+                        { s: "twenty, twenty-five, thirty, thirty-five, _______", next: "forty", dist: ["fifty", "thirty-six", "forty-five"] },
+                        { s: "seventy, seventy-five, eighty, eighty-five, _______", next: "ninety", dist: ["ninety-five", "eighty-six", "one hundred"] }
+                    ]);
+                    return {
+                        q: 'Observe el patrón numérico en inglés: "' + seq.s + '". ¿Cuál número completa la serie de forma exacta?',
+                        o: window.shuffle([seq.next, seq.dist[0], seq.dist[1], seq.dist[2]]),
+                        c: seq.next
+                    };
+                },
+
+                // 21. Numbers 1 to 100: Simple Math Word Operation
+                function() {
+                    var problem = window.pick([
+                        { eq: "twenty + thirty", res: "fifty", dist: ["forty", "sixty", "seventy"] },
+                        { eq: "forty + forty", res: "eighty", dist: ["seventy", "ninety", "one hundred"] },
+                        { eq: "ten + seventy", res: "eighty", dist: ["ninety", "sixty", "seventy"] },
+                        { eq: "fifty + fifty", res: "one hundred", dist: ["ninety", "eighty", "sixty"] },
+                        { eq: "thirty + thirty", res: "sixty", dist: ["fifty", "seventy", "forty"] },
+                        { eq: "eighty - twenty", res: "sixty", dist: ["fifty", "seventy", "forty"] },
+                        { eq: "one hundred - thirty", res: "seventy", dist: ["eighty", "sixty", "fifty"] }
+                    ]);
+                    return {
+                        q: 'Resuelva mentalmente la siguiente operación aritmética en inglés: "' + problem.eq + ' = ?". ¿Cuál es el resultado escrito?',
+                        o: window.shuffle([problem.res, problem.dist[0], problem.dist[1], problem.dist[2]]),
+                        c: problem.res
+                    };
+                },
+
+                // 22. Community places + Goods & Services combined
+                function() {
+                    var k = window.pick(KIDS);
+                    var item = window.pick([
+                        { p: "supermarket", t: "buys fresh groceries (goods)", w: ["bank to get goods", "hospital to buy goods", "park to buy services"] },
+                        { p: "hospital", t: "receives a medical consultation (service)", w: ["supermarket to receive services", "bakery to receive services", "library to get goods"] },
+                        { p: "bakery", t: "purchases fresh bread rolls (goods)", w: ["police station to buy goods", "fire station to get goods", "bank to buy services"] },
+                        { p: "police station", t: "requests security protection (service)", w: ["post office to buy goods", "pharmacy to buy services", "supermarket to get services"] }
+                    ]);
+                    return {
+                        q: k + ' visita un lugar de la comunidad donde ' + item.t + '. ¿Qué edificio visitó en inglés y qué tipo de beneficio obtuvo?',
+                        o: window.shuffle([item.p.charAt(0).toUpperCase() + item.p.slice(1) + ", which involves " + (item.t.indexOf("service") !== -1 ? "a service" : "goods"), item.w[0], item.w[1], item.w[2]]),
+                        c: item.p.charAt(0).toUpperCase() + item.p.slice(1) + ", which involves " + (item.t.indexOf("service") !== -1 ? "a service" : "goods")
+                    };
+                },
+
+                // 23. Numbers 1 to 100: Counting items in Cartago
+                function() {
+                    var n = window.randInt(31, 99);
+                    var tensWord = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"][Math.floor(n / 10) - 2];
+                    var unitWords = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+                    var rem = n % 10;
+                    var correctWord = rem === 0 ? tensWord : tensWord + "-" + unitWords[rem];
+
+                    var fakeWord1 = tensWord + "-" + unitWords[(rem + 2) % 9 + 1];
+                    var fakeWord2 = "forty-" + unitWords[rem === 0 ? 3 : rem];
+                    var fakeWord3 = tensWord + "teen";
+
+                    var k = window.pick(KIDS);
+                    return {
+                        q: 'En el almacén escolar de ' + k + ' hay exactamente ' + n + ' cuadernos rotulados para tercer grado. ¿Cómo se expresa la cifra ' + n + ' en palabras en inglés?',
+                        o: window.shuffle([correctWord, fakeWord1, fakeWord2, fakeWord3]),
+                        c: correctWord
+                    };
+                },
+
+                // 24. Prepositions: Opposite on a street avenue
+                function() {
+                    var k = window.pick(KIDS);
+                    return {
+                        q: 'En la calle principal de ' + window.pick(PLACES) + ', la farmacia está construida en la acera norte y la estación de bomberos está en la acera sur, directamente una frente a la otra al cruzar la vía. Complete: "The pharmacy is __________ the fire station."',
+                        o: ["opposite", "behind", "between", "next to"],
+                        c: "opposite"
+                    };
+                },
+
+                // 25. Giving directions: Multi-step location
+                function() {
+                    var p1 = window.pick(["the park", "the hospital", "the school"]);
+                    var p2 = window.pick(["the bakery", "the supermarket", "the library"]);
+                    return {
+                        q: 'Un visitante pregunta por la estación de policía. La indicación dice: "Walk two blocks; the police station is right between ' + p1 + ' and ' + p2 + '." ¿Dónde está situada la estación de policía?',
+                        o: ["En medio de " + p1 + " y " + p2, "Detrás de " + p1, "Enfrente de " + p2, "A la par de la estación de bomberos"],
+                        c: "En medio de " + p1 + " y " + p2
+                    };
                 }
             ]
         };
 
-        // CONSTRUCTOR QUE GARANTIZA EXACTAMENTE 20 PREGUNTAS SIN REPETIR DENTRO DEL EXAMEN Y ENTRE INTENTOS
         window.buildProceduralExam = function(materia, seenList) {
             var pool = window.PROCEDURAL_GENERATORS[materia] || window.PROCEDURAL_GENERATORS["Español"];
             var results = [];
             var usedQuestionsInSession = new Set();
             var seenSet = new Set(seenList || []);
 
-            // Barajar los generadores disponibles para arrancar en orden impredecible
+            // Barajar los generadores disponibles para iniciar en orden impredecible
             var shuffledIndices = window.shuffle(Array.from(Array(pool.length).keys()));
 
-            // PASO 1: Generar preguntas que no hayan sido vistas en intentos anteriores
+            // PASO 1: Generar preguntas que no hayan sido vistas en sesiones anteriores
             for (var i = 0; i < shuffledIndices.length; i++) {
                 if (results.length >= 20) break;
                 var fn = pool[shuffledIndices[i]];
-                for (var attempt = 0; attempt < 8; attempt++) {
+                for (var attempt = 0; attempt < 25; attempt++) {
                     var item = fn();
                     if (item && item.q && !usedQuestionsInSession.has(item.q) && !seenSet.has(item.q)) {
                         usedQuestionsInSession.add(item.q);
@@ -780,31 +1026,34 @@
                 }
             }
 
-            // PASO 2: Si aún faltan preguntas para 20 (porque el alumno ya resolvió muchas),
-            // generar variantes aleatorias asegurando cero repetición en la sesión actual
+            // PASO 2: Si el alumno ya ha realizado múltiples prácticas y quedan pocas preguntas inéditas,
+            // generar variantes combinatorias nuevas sin repetir dentro de la misma sesión
             var safetyCounter = 0;
-            while (results.length < 20 && safetyCounter < 150) {
+            while (results.length < 20 && safetyCounter < 300) {
                 safetyCounter++;
                 var randomFn = window.pick(pool);
                 var dynItem = randomFn();
                 if (dynItem && dynItem.q && !usedQuestionsInSession.has(dynItem.q)) {
-                    if (!seenSet.has(dynItem.q) || safetyCounter > 80) {
+                    if (!seenSet.has(dynItem.q) || safetyCounter > 150) {
                         usedQuestionsInSession.add(dynItem.q);
                         results.push(dynItem);
                     }
                 }
             }
 
-            // PASO 3: Garantía estricta final de 20 preguntas únicas
+            // PASO 3: Garantía estricta final de exactamente 20 preguntas
             var fallbackCounter = 0;
-            while (results.length < 20 && fallbackCounter < 50) {
+            while (results.length < 20 && fallbackCounter < 60) {
                 fallbackCounter++;
                 var baseItem = window.pick(pool)();
                 if (baseItem && baseItem.q) {
-                    var variantQ = baseItem.q + " [Variante R" + (results.length + 1) + "]";
-                    if (!usedQuestionsInSession.has(variantQ)) {
-                        usedQuestionsInSession.add(variantQ);
-                        results.push({ q: variantQ, o: window.shuffle(baseItem.o), c: baseItem.c });
+                    var uniqueQ = baseItem.q;
+                    if (usedQuestionsInSession.has(uniqueQ)) {
+                        uniqueQ = baseItem.q + " (Reto " + (results.length + 1) + ")";
+                    }
+                    if (!usedQuestionsInSession.has(uniqueQ)) {
+                        usedQuestionsInSession.add(uniqueQ);
+                        results.push({ q: uniqueQ, o: window.shuffle(baseItem.o), c: baseItem.c });
                     }
                 }
             }
@@ -831,61 +1080,67 @@
 
             var final20 = [];
             var engineName = "PROCEDURAL INÉDITO";
-            var apiKey = (localStorage.getItem('gemini_user_api_key') || "").trim();
+            
+            // Prioridad a la clave de usuario o clave de entorno (en Canvas la clave se provee automáticamente)
+            var userKey = (localStorage.getItem('gemini_user_api_key') || "").trim();
+            var apiKey = userKey || "";
+            var apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=" + apiKey;
 
-            // Si el usuario configuró su clave personal de Gemini, intentar la generación con IA
-            if (apiKey) {
-                try {
-                    var sessionSalt = "SES_" + Date.now() + "_" + Math.random().toString(36).substring(2, 7);
-                    var excludeSlice = seenQuestions.slice(-30);
-                    var excludeText = excludeSlice.length > 0
-                        ? "PROHIBIDO REPETIR O UTILIZAR CUALQUIERA DE ESTAS PREGUNTAS YA RESUELTAS:\n" + excludeSlice.map(function(q) { return "- " + q; }).join("\n")
-                        : "Genera un conjunto 100% inédito.";
+            try {
+                var sessionSalt = "SES_" + Date.now() + "_" + Math.random().toString(36).substring(2, 7);
+                var excludeSlice = seenQuestions.slice(-30);
+                var excludeText = excludeSlice.length > 0
+                    ? "PROHIBIDO REPETIR O UTILIZAR CUALQUIERA DE ESTAS PREGUNTAS YA RESUELTAS:\n" + excludeSlice.map(function(q) { return "- " + q; }).join("\n")
+                    : "Genera un conjunto 100% inédito.";
 
-                    var prompt = "Eres un evaluador del MEP de Costa Rica para la Escuela Juan Ramírez Ramírez (Sección 3-2). Genera EXACTAMENTE 20 preguntas analíticas e inéditas de selección única para " + materia + ".\n" +
-                                 "REGLAS:\n" +
-                                 "1. Nivel analítico y retador para 3er grado de primaria según el temario oficial del MEP.\n" +
-                                 "2. " + excludeText + "\n" +
-                                 "3. Si es Inglés, el enunciado debe estar en español y las opciones/respuesta en inglés.\n" +
-                                 "4. Salida en formato JSON estricto con arreglo 'questions' conteniendo {q, o, c}.\n" +
-                                 "Código de variedad única: [" + sessionSalt + "].";
-                    
-                    var res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + apiKey, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            contents: [{ parts: [{ text: prompt }] }],
-                            generationConfig: {
-                                responseMimeType: "application/json",
-                                temperature: 1.0,
-                                responseSchema: {
-                                    type: "OBJECT",
-                                    properties: {
-                                        questions: {
-                                            type: "ARRAY",
-                                            items: {
-                                                type: "OBJECT",
-                                                properties: {
-                                                    q: { type: "STRING" },
-                                                    o: { type: "ARRAY", items: { type: "STRING" } },
-                                                    c: { type: "STRING" }
-                                                },
-                                                required: ["q", "o", "c"]
-                                            }
-                                        }
-                                    },
-                                    required: ["questions"]
+                var prompt = "Eres un evaluador del MEP de Costa Rica para la Escuela Juan Ramírez Ramírez (Sección 3-2). Genera EXACTAMENTE 20 preguntas analíticas e inéditas de selección única para " + materia + ".\n" +
+                             "REGLAS OBLIGATORIAS:\n" +
+                             "1. Nivel analítico y retador para 3er grado de primaria según el temario oficial del MEP.\n" +
+                             "2. " + excludeText + "\n" +
+                             "3. Si es Inglés, el enunciado debe estar en español y las opciones/respuesta en inglés sobre: Getting around town (community places, prepositions of location: between, behind, next to, opposite, in front of, goods and services), and numbers from 1 to 100. ESTÁ ESTRICTAMENTE PROHIBIDO incluir efemérides, holidays o celebraciones patrias de Costa Rica.\n" +
+                             "4. Salida en formato JSON estricto con un objeto que tenga la propiedad 'questions' conteniendo un arreglo con {q, o, c}.\n" +
+                             "Código de variedad única: [" + sessionSalt + "].";
+                
+                var payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        temperature: 1.0,
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                questions: {
+                                    type: "ARRAY",
+                                    items: {
+                                        type: "OBJECT",
+                                        properties: {
+                                            q: { type: "STRING" },
+                                            o: { type: "ARRAY", items: { type: "STRING" } },
+                                            c: { type: "STRING" }
+                                        },
+                                        required: ["q", "o", "c"]
+                                    }
                                 }
-                            }
-                        })
-                    });
+                            },
+                            required: ["questions"]
+                        }
+                    }
+                };
 
-                    if (res.ok) {
-                        var json = await res.json();
-                        var parsed = JSON.parse(json.candidates[0].content.parts[0].text);
+                var res = await fetch(apiUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if (res.ok) {
+                    var json = await res.json();
+                    var candidateText = json.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (candidateText) {
+                        var parsed = JSON.parse(candidateText);
                         if (parsed.questions && parsed.questions.length >= 20) {
                             var aiFiltered = parsed.questions.filter(function(item) {
-                                return !seenQuestions.includes(item.q);
+                                return item.q && item.c && item.o && item.o.length >= 4 && !seenQuestions.includes(item.q);
                             });
                             if (aiFiltered.length >= 20) {
                                 final20 = aiFiltered.slice(0, 20);
@@ -893,18 +1148,18 @@
                             }
                         }
                     }
-                } catch (err) {
-                    console.warn("IA no respondió, conmutando a motor procedural:", err);
                 }
+            } catch (err) {
+                console.warn("IA no respondió, conmutando a motor procedural de alta combinatoria:", err);
             }
 
-            // Si no hay clave, falló la llamada o la IA devolvió repetidas, construir con el motor procedural sin repetición
+            // Si la IA no está disponible o no generó las 20 preguntas inéditas, usar el motor procedural
             if (final20.length < 20) {
                 final20 = window.buildProceduralExam(materia, seenQuestions);
                 engineName = "PROCEDURAL INÉDITO";
             }
 
-            // Registrar preguntas vistas en memoria persistente para evitar repeticiones en intentos futuros
+            // Registrar preguntas vistas para evitar que se repitan en las siguientes prácticas
             try {
                 var newSeen = final20.map(function(x) { return x.q; });
                 var updated = Array.from(new Set(seenQuestions.concat(newSeen))).slice(-200);
