@@ -100,9 +100,9 @@
                     <div>
                         <span class="text-4xl mb-3 block">🇬🇧</span>
                         <h3 class="text-xl font-extrabold text-white uppercase tracking-tight">Inglés</h3>
-                        <p class="text-[0.7rem] text-violet-300 font-semibold uppercase mt-1 tracking-wider">Bilingüe: Pregunta ES / Opciones EN</p>
+                        <p class="text-[0.7rem] text-violet-300 font-semibold uppercase mt-1 tracking-wider">Viernes 2 de octubre</p>
                     </div>
-                    <p class="text-[0.68rem] text-slate-400 mt-4 leading-relaxed font-medium">House chores, match holidays and dates, months of the year in order, and ordinal numbers (1st to 10th).</p>
+                    <p class="text-[0.68rem] text-slate-400 mt-4 leading-relaxed font-medium">Getting around town (community places, prepositions: between, behind, next to, opposite, in front of, goods &amp; services) and numbers 1-100.</p>
                 </button>
             </div>
         </div>
@@ -656,102 +656,325 @@
             ],
 
             "Inglés": [
-                // 1. House chores: wash the dishes
+                // 1. Community places: function / description
                 function() {
-                    var k = window.pick(KIDS);
-                    return { q: "Después de almorzar, " + k + " ayuda en la cocina lavando los platos, vasos y cubiertos en el fregadero. ¿Qué quehacer doméstico en inglés realiza?", o: ["wash the dishes", "cook", "iron", "walk the dog"], c: "wash the dishes" };
-                },
-                // 2. House chores: wash the clothes
-                function() {
-                    var k = window.pick(KIDS);
-                    return { q: "Los uniformes escolares de " + k + " están sucios y deben colocarse en la lavadora con jabón. ¿Qué tarea del hogar en inglés corresponde?", o: ["wash the clothes", "vacuum", "cook", "iron"], c: "wash the clothes" };
-                },
-                // 3. House chores: iron
-                function() {
-                    var k = window.pick(KIDS);
-                    return { q: "La camisa escolar de " + k + " está seca pero llena de arrugas, por lo que utiliza una plancha caliente para alisarla. ¿Qué acción realiza?", o: ["iron", "wash the dishes", "cook", "vacuum"], c: "iron" };
-                },
-                // 4. House chores: cook
-                function() {
-                    var k = window.pick(KIDS);
-                    return { q: "En la cocina, " + k + " y su familia preparan los alimentos al fuego en ollas y sartenes para la cena. ¿Qué quehacer en inglés ejecutan?", o: ["cook", "walk the dog", "vacuum", "iron"], c: "cook" };
-                },
-                // 5. House chores: walk the dog
-                function() {
-                    var k = window.pick(KIDS);
-                    return { q: "La mascota de " + k + " necesita salir a caminar al parque para ejercitarse y pasear. ¿Cuál tarea en inglés corresponde?", o: ["walk the dog", "cook", "wash the dishes", "iron"], c: "walk the dog" };
-                },
-                // 6. House chores: vacuum
-                function() {
-                    var k = window.pick(KIDS);
-                    return { q: "La alfombra de la sala tiene polvo y migajas. " + k + " enciende la aspiradora eléctrica para limpiarla. ¿Qué acción en inglés realiza?", o: ["vacuum", "wash the clothes", "cook", "walk the dog"], c: "vacuum" };
-                },
-                // 7. Holidays: Independence Day
-                function() {
-                    return { q: "En Costa Rica celebramos con desfiles y faroles el Día de la Independencia (Independence Day). ¿Cuál fecha en inglés le corresponde?", o: ["September 15th", "December 25th", "April 11th", "July 25th"], c: "September 15th" };
-                },
-                // 8. Holidays: Christmas
-                function() {
-                    return { q: "La festividad familiar de Navidad (Christmas) se conmemora en el calendario con la fecha en inglés:", o: ["December 25th", "January 1st", "August 15th", "May 1st"], c: "December 25th" };
-                },
-                // 9. Holidays: Juan Santamaría Day
-                function() {
-                    return { q: "El Día de Juan Santamaría (Juan Santamaría Day) conmemora al héroe nacional alajuelense. ¿Cuál es su fecha correspondiente en inglés?", o: ["April 11th", "April 15th", "May 1st", "August 2nd"], c: "April 11th" };
-                },
-                // 10. Holidays: Mother's Day
-                function() {
-                    return { q: "El Día de la Madre (Mother's Day) en Costa Rica es una fecha muy especial para homenajear a mamá. ¿En cuál fecha en inglés se celebra?", o: ["August 15th", "August 2nd", "July 25th", "September 15th"], c: "August 15th" };
-                },
-                // 11. Holidays: Annexation of Nicoya
-                function() {
-                    return { q: "La Anexión del Partido de Nicoya (Annexation of Nicoya) es una gran fiesta folclórica patria. ¿A cuál fecha en inglés corresponde?", o: ["July 25th", "July 15th", "June 25th", "August 2nd"], c: "July 25th" };
-                },
-                // 12. Holidays: New Year's Day
-                function() {
-                    return { q: "El primer día del año, conocido en inglés como New Year's Day, se conmemora en la fecha:", o: ["January 1st", "December 31st", "February 1st", "January 10th"], c: "January 1st" };
-                },
-                // 13. Holidays: Our Lady of Los Angeles Day
-                function() {
-                    return { q: "La tradicional fiesta y romería de la Virgen de los Ángeles (Our Lady of Los Angeles Day) en Cartago se celebra en la fecha:", o: ["August 2nd", "August 15th", "July 25th", "September 14th"], c: "August 2nd" };
-                },
-                // 14. Holidays: Labor Day
-                function() {
-                    return { q: "El Día del Trabajador (Labor Day) es un feriado conmemorado en la fecha en inglés:", o: ["May 1st", "May 15th", "April 11th", "June 1st"], c: "May 1st" };
-                },
-                // 15. Ordinal numbers: 1st to 5th
-                function() {
-                    var o = window.pick([
-                        { es: "primer (1°)", en: "1st" },
-                        { es: "segundo (2°)", en: "2nd" },
-                        { es: "tercer (3°)", en: "3rd" },
-                        { es: "cuarto (4°)", en: "4th" },
-                        { es: "quinto (5°)", en: "5th" }
+                    var place = window.pick([
+                        { d: "las personas enfermas reciben atención médica de doctores y enfermeras", r: "hospital", w: ["bakery", "library", "police station"] },
+                        { d: "los niños van a aprender, leer y recibir clases con sus maestros", r: "school", w: ["supermarket", "bank", "fire station"] },
+                        { d: "las familias compran alimentos frescos, frutas, verduras y abarrotes", r: "supermarket", w: ["pharmacy", "park", "church"] },
+                        { d: "los bomberos guardan sus camiones y mangueras para apagar incendios", r: "fire station", w: ["restaurant", "library", "school"] },
+                        { d: "los oficiales de policía protegen a los ciudadanos y mantienen el orden público", r: "police station", w: ["bakery", "park", "hospital"] },
+                        { d: "las personas compran pan recién horneado, pasteles y repostería", r: "bakery", w: ["bank", "pharmacy", "supermarket"] },
+                        { d: "podemos pedir prestados libros y leer en silencio", r: "library", w: ["restaurant", "fire station", "bus station"] },
+                        { d: "las personas guardan su dinero de manera segura y realizan depósitos", r: "bank", w: ["park", "bakery", "school"] },
+                        { d: "compramos medicinas recetadas por el médico para recuperar la salud", r: "pharmacy", w: ["supermarket", "church", "library"] },
+                        { d: "los niños juegan en columpios, corren al aire libre y disfrutan áreas verdes", r: "park", w: ["hospital", "bank", "police station"] },
+                        { d: "las personas envían cartas, sobres y paquetes por correo", r: "post office", w: ["cinema", "bakery", "library"] },
+                        { d: "las familias comen deliciosos platillos preparados por cocineros fuera de casa", r: "restaurant", w: ["police station", "bank", "supermarket"] },
+                        { d: "los pasajeros abordan autobuses para viajar a diferentes pueblos y ciudades", r: "bus station", w: ["pharmacy", "school", "bakery"] },
+                        { d: "los feligreses asisten a orar y participar en servicios religiosos comunitarios", r: "church", w: ["fire station", "supermarket", "post office"] }
                     ]);
                     var k = window.pick(KIDS);
-                    var wrong = ["1st", "2nd", "3rd", "4th", "5th"].filter(function(x) { return x !== o.en; }).slice(0, 3);
-                    return { q: "En una competencia atlética de la Escuela Juan Ramírez, " + k + " obtuvo el " + o.es + " lugar. ¿Cómo se escribe ese número ordinal en inglés?", o: [o.en, wrong[0], wrong[1], wrong[2]], c: o.en };
+                    return { q: k + " visita un lugar de la comunidad donde " + place.d + ". ¿A cuál lugar de la comunidad en inglés corresponde?", o: window.shuffle([place.r, place.w[0], place.w[1], place.w[2]]), c: place.r };
                 },
-                // 16. Ordinal numbers: 6th to 10th
+                // 2. Community places: workers / professions
                 function() {
-                    var o = window.pick([
-                        { es: "sexto (6°)", en: "6th" },
-                        { es: "séptimo (7°)", en: "7th" },
-                        { es: "octavo (8°)", en: "8th" },
-                        { es: "noveno (9°)", en: "9th" },
-                        { es: "décimo (10°)", en: "10th" }
+                    var worker = window.pick([
+                        { w: "A firefighter (bombero) works with hoses and trucks extinguishing fires", p: "fire station", dist: ["bakery", "police station", "library"] },
+                        { w: "A doctor and nurses treat sick patients and check health", p: "hospital", dist: ["supermarket", "bank", "school"] },
+                        { w: "A police officer helps citizens, catches criminals, and directs traffic", p: "police station", dist: ["park", "pharmacy", "bakery"] },
+                        { w: "A baker prepares delicious fresh bread and cakes early in the morning", p: "bakery", dist: ["library", "bank", "fire station"] },
+                        { w: "A librarian organizes storybooks and helps students find information", p: "library", dist: ["post office", "hospital", "bus station"] },
+                        { w: "A bank teller assists clients with money deposits and savings", p: "bank", dist: ["park", "pharmacy", "church"] }
                     ]);
-                    var wrong = ["6th", "7th", "8th", "9th", "10th"].filter(function(x) { return x !== o.en; }).slice(0, 3);
-                    return { q: 'Al indicar posiciones en inglés, ¿cuál abreviatura corresponde al número ordinal "' + o.es + '"?', o: [o.en, wrong[0], wrong[1], wrong[2]], c: o.en };
+                    return { q: 'En el pueblo: "' + worker.w + '". ¿En cuál lugar de la comunidad en inglés trabaja esta persona?', o: window.shuffle([worker.p, worker.dist[0], worker.dist[1], worker.dist[2]]), c: worker.p };
                 },
-                // 17. Months in order
+                // 3. Prepositions of location: BETWEEN
                 function() {
-                    var series = window.pick([
-                        { cor: "January, February, March", w1: "February, January, March", w2: "March, February, January", w3: "January, March, February" },
-                        { cor: "April, May, June", w1: "May, April, June", w2: "June, May, April", w3: "April, June, May" },
-                        { cor: "July, August, September", w1: "August, July, September", w2: "September, August, July", w3: "July, September, August" },
-                        { cor: "October, November, December", w1: "November, October, December", w2: "December, November, October", w3: "October, December, November" }
+                    var k = window.pick(KIDS);
+                    var p1 = window.pick(["the school", "the bank", "the pharmacy"]);
+                    var p2 = window.pick(["the park", "the hospital", "the supermarket"]);
+                    return {
+                        q: 'En el croquis de la comunidad de ' + k + ', la biblioteca está situada en medio de ' + p1 + ' y ' + p2 + '. Complete la oración: "The library is __________ ' + p1 + ' and ' + p2 + '."',
+                        o: ["between", "behind", "next to", "in front of"],
+                        c: "between"
+                    };
+                },
+                // 4. Prepositions of location: NEXT TO
+                function() {
+                    var p1 = window.pick(["The bakery", "The pharmacy", "The bank", "The police station"]);
+                    var p2 = window.pick(["the supermarket", "the school", "the hospital", "the library"]);
+                    return {
+                        q: 'En el mapa del pueblo, ' + p1.toLowerCase() + ' está ubicado a la par (al lado directo) de ' + p2 + '. ¿Cuál preposición de lugar en inglés completa: "' + p1 + ' is __________ ' + p2 + '"?',
+                        o: ["next to", "between", "behind", "in front of"],
+                        c: "next to"
+                    };
+                },
+                // 5. Prepositions of location: BEHIND
+                function() {
+                    var k = window.pick(KIDS);
+                    return {
+                        q: k + ' observa en el plano que el área de juegos (playground) está situada en la parte trasera (detrás) de la escuela. ¿Cuál preposición en inglés completa: "The playground is __________ the school"?',
+                        o: ["behind", "in front of", "opposite", "between"],
+                        c: "behind"
+                    };
+                },
+                // 6. Prepositions of location: IN FRONT OF
+                function() {
+                    var k = window.pick(KIDS);
+                    return {
+                        q: 'En el mapa comunal de ' + k + ', la parada de autobús está situada justo delante (enfrente) del hospital. ¿Cuál preposición en inglés completa: "The bus stop is __________ the hospital"?',
+                        o: ["in front of", "behind", "between", "next to"],
+                        c: "in front of"
+                    };
+                },
+                // 7. Prepositions of location: OPPOSITE
+                function() {
+                    var k = window.pick(KIDS);
+                    return {
+                        q: k + ' nota que el banco está cruzando la calle principal, exactamente frente a frente al parque. ¿Cuál preposición de dirección en inglés completa: "The bank is __________ the park"?',
+                        o: ["opposite", "behind", "between", "next to"],
+                        c: "opposite"
+                    };
+                },
+                // 8. Spatial logic / Inverse prepositions
+                function() {
+                    var pair = window.pick([
+                        { dir1: "in front of", dir2: "behind", obj1: "the school", obj2: "the park" },
+                        { dir1: "behind", dir2: "in front of", obj1: "the library", obj2: "the supermarket" }
                     ]);
-                    return { q: "¿Cuál de las siguientes opciones presenta tres meses del año en estricto y correcto ORDEN CRONOLÓGICO en inglés?", o: [series.cor, series.w1, series.w2, series.w3], c: series.cor };
+                    return {
+                        q: 'Si en el mapa comunal "' + pair.obj1 + ' is ' + pair.dir1 + ' ' + pair.obj2 + '", entonces lógicamente: "' + pair.obj2 + ' is __________ ' + pair.obj1 + '".',
+                        o: [pair.dir2, "between", "opposite", "next to"],
+                        c: pair.dir2
+                    };
+                },
+                // 9. Giving directions based on mini-map description
+                function() {
+                    var k = window.pick(KIDS);
+                    return {
+                        q: k + ' lee la siguiente descripción del plano: "Walk straight on Main Street. The bakery is on the corner, and the supermarket is directly on its right side sharing the same wall." ¿Cuál relación espacial en inglés existe?',
+                        o: ["The supermarket is next to the bakery", "The supermarket is behind the bakery", "The supermarket is between the bakery", "The supermarket is opposite the bakery"],
+                        c: "The supermarket is next to the bakery"
+                    };
+                },
+                // 10. Goods vs Services: Concept of Goods
+                function() {
+                    return {
+                        q: 'En la unidad "Getting around town", ¿cómo se define formalmente en inglés el concepto de "GOODS" (bienes)?',
+                        o: ["Things that are made or grown and that you can touch, hold, and buy", "Jobs, skills, or actions that people perform to help others", "Places where children go to play on weekends", "Prepositions that indicate position on a map"],
+                        c: "Things that are made or grown and that you can touch, hold, and buy"
+                    };
+                },
+                // 11. Goods vs Services: Concept of Services
+                function() {
+                    return {
+                        q: 'En la clasificación económica de la comunidad, ¿cómo se define en inglés el concepto de "SERVICES" (servicios)?',
+                        o: ["Jobs, work, skills, or actions that people perform for others", "Tangible items and physical objects you can take home in a bag", "Streets and avenues where cars drive", "Buildings located between two corners"],
+                        c: "Jobs, work, skills, or actions that people perform for others"
+                    };
+                },
+                // 12. Goods vs Services: Identify a Good
+                function() {
+                    var good = window.pick(["A school backpack", "A bottle of milk", "A pair of sneakers", "A fresh red apple", "A pencil case", "A loaf of bread", "A storybook"]);
+                    var services = window.shuffle(["Medical checkup by a doctor", "Haircut at the barbershop", "Bus transportation to town", "Police protection", "Firefighting service", "Teaching lessons in class"]).slice(0, 3);
+                    return {
+                        q: "¿Cuál de las siguientes opciones de la comunidad corresponde a un BIEN tangible (GOOD)?",
+                        o: window.shuffle([good, services[0], services[1], services[2]]),
+                        c: good
+                    };
+                },
+                // 13. Goods vs Services: Identify a Service
+                function() {
+                    var service = window.pick(["Medical checkup by a doctor", "Haircut by a barber", "Bus transportation by a driver", "Firefighting by brave firefighters", "Teaching lessons by a teacher", "Repairing a broken bicycle by a mechanic"]);
+                    var goods = window.shuffle(["A loaf of bread", "A storybook", "A pair of sports shoes", "A notebook", "An umbrella", "A bottle of water"]).slice(0, 3);
+                    return {
+                        q: "¿Cuál de las siguientes actividades de la comunidad se clasifica estrictamente como un SERVICIO (SERVICE)?",
+                        o: window.shuffle([service, goods[0], goods[1], goods[2]]),
+                        c: service
+                    };
+                },
+                // 14. Goods vs Services: Practical context
+                function() {
+                    var item = window.pick([
+                        { n: "comprar una manzana fresca en el supermercado", r: "A good, because it is a physical item you can touch and consume" },
+                        { n: "recibir un corte de cabello en la peluquería", r: "A service, because a person is performing an action or skill for you" },
+                        { n: "viajar en el autobús pagando la tarifa de transporte", r: "A service, because the driver provides the action of transportation" },
+                        { n: "comprar un par de zapatos deportivos para educación física", r: "A good, because it is a physical product you own and take home" }
+                    ]);
+                    return {
+                        q: 'Cuando una persona decide ' + item.n + ', está adquiriendo:',
+                        o: [item.r, "A preposition of location on a map", "A community place building", "A cardinal direction indicator"],
+                        c: item.r
+                    };
+                },
+                // 15. Goods vs Services: The only SERVICE in a list
+                function() {
+                    var service = window.pick(["Car washing by a car washer", "Dental examination by a dentist", "Package delivery by a postal worker", "House painting by a painter"]);
+                    var goods = ["A toy car", "A box of crayons", "A sandwich"];
+                    return {
+                        q: "Lea con atención la siguiente lista de la comunidad: [" + goods[0] + ", " + goods[1] + ", " + service + ", " + goods[2] + "]. ¿Cuál representa el ÚNICO SERVICIO (SERVICE)?",
+                        o: window.shuffle([service, goods[0], goods[1], goods[2]]),
+                        c: service
+                    };
+                },
+                // 16. Goods vs Services: The only GOOD in a list
+                function() {
+                    var good = window.pick(["A blue notebook", "A pencil sharpener", "A rain jacket", "A box of cereal"]);
+                    var services = ["Taxi ride", "Cooking lessons", "Medical consultation"];
+                    return {
+                        q: "En el pueblo encontramos: [" + services[0] + ", " + good + ", " + services[1] + ", " + services[2] + "]. ¿Cuál elemento se clasifica como un BIEN (GOOD)?",
+                        o: window.shuffle([good, services[0], services[1], services[2]]),
+                        c: good
+                    };
+                },
+                // 17. Numbers 1 to 100: Tens (20, 30, 40, 50, 60, 70, 80, 90, 100)
+                function() {
+                    var num = window.pick([
+                        { d: 20, w: "twenty", dist: ["twelve", "thirty", "two"] },
+                        { d: 30, w: "thirty", dist: ["thirteen", "forty", "twenty"] },
+                        { d: 40, w: "forty", dist: ["fourteen", "four", "fifty"] },
+                        { d: 50, w: "fifty", dist: ["fifteen", "five", "sixty"] },
+                        { d: 60, w: "sixty", dist: ["sixteen", "six", "seventy"] },
+                        { d: 70, w: "seventy", dist: ["seventeen", "seven", "eighty"] },
+                        { d: 80, w: "eighty", dist: ["eighteen", "eight", "ninety"] },
+                        { d: 90, w: "ninety", dist: ["nineteen", "nine", "eighty"] },
+                        { d: 100, w: "one hundred", dist: ["ten", "one thousand", "one hundredth"] }
+                    ]);
+                    var k = window.pick(KIDS);
+                    return {
+                        q: k + ' cuenta exactamente ' + num.d + ' pupitres en el aula escolar. ¿Cómo se escribe el número ' + num.d + ' en inglés?',
+                        o: window.shuffle([num.w, num.dist[0], num.dist[1], num.dist[2]]),
+                        c: num.w
+                    };
+                },
+                // 18. Numbers 1 to 100: Compound numbers (twenty-one to ninety-nine)
+                function() {
+                    var tens = [
+                        { d: 20, w: "twenty" }, { d: 30, w: "thirty" }, { d: 40, w: "forty" },
+                        { d: 50, w: "fifty" }, { d: 60, w: "sixty" }, { d: 70, w: "seventy" },
+                        { d: 80, w: "eighty" }, { d: 90, w: "ninety" }
+                    ];
+                    var units = [
+                        { d: 1, w: "one" }, { d: 2, w: "two" }, { d: 3, w: "three" },
+                        { d: 4, w: "four" }, { d: 5, w: "five" }, { d: 6, w: "six" },
+                        { d: 7, w: "seven" }, { d: 8, w: "eight" }, { d: 9, w: "nine" }
+                    ];
+                    var t = window.pick(tens);
+                    var u = window.pick(units);
+                    var numVal = t.d + u.d;
+                    var correctWord = t.w + "-" + u.w;
+
+                    var w1 = t.w + "-" + window.pick(units.filter(function(x) { return x.d !== u.d; })).w;
+                    var w2 = window.pick(tens.filter(function(x) { return x.d !== t.d; })).w + "-" + u.w;
+                    var w3 = t.w + "teen";
+
+                    return {
+                        q: 'Teacher Karol tiene ' + numVal + ' libros en la biblioteca de la escuela. ¿Cuál es la forma correcta de escribir el número ' + numVal + ' en inglés?',
+                        o: window.shuffle([correctWord, w1, w2, w3]),
+                        c: correctWord
+                    };
+                },
+                // 19. Numbers 1 to 100: Word to digits
+                function() {
+                    var list = [
+                        { w: "thirty-four", d: "34", dist: ["43", "30", "14"] },
+                        { w: "fifty-seven", d: "57", dist: ["75", "50", "17"] },
+                        { w: "eighty-two", d: "82", dist: ["28", "80", "18"] },
+                        { w: "sixty-nine", d: "69", dist: ["96", "60", "19"] },
+                        { w: "forty-eight", d: "48", dist: ["84", "40", "18"] },
+                        { w: "seventy-one", d: "71", dist: ["17", "70", "77"] },
+                        { w: "ninety-five", d: "95", dist: ["59", "90", "19"] },
+                        { w: "twenty-six", d: "26", dist: ["62", "20", "16"] }
+                    ];
+                    var item = window.pick(list);
+                    return {
+                        q: 'Al leer en inglés la cifra escrita "' + item.w + '", ¿a cuál número en dígitos corresponde?',
+                        o: window.shuffle([item.d, item.dist[0], item.dist[1], item.dist[2]]),
+                        c: item.d
+                    };
+                },
+                // 20. Numbers 1 to 20: Irregular teen numbers
+                function() {
+                    var teen = window.pick([
+                        { d: 11, w: "eleven", dist: ["twelve", "one", "ten"] },
+                        { d: 12, w: "twelve", dist: ["eleven", "twenty", "two"] },
+                        { d: 13, w: "thirteen", dist: ["thirty", "three", "fifteen"] },
+                        { d: 14, w: "fourteen", dist: ["forty", "four", "fifteen"] },
+                        { d: 15, w: "fifteen", dist: ["fifty", "five", "thirteen"] },
+                        { d: 18, w: "eighteen", dist: ["eighty", "eight", "nineteen"] }
+                    ]);
+                    return {
+                        q: '¿Cómo se escribe correctamente en inglés el número ' + teen.d + '?',
+                        o: window.shuffle([teen.w, teen.dist[0], teen.dist[1], teen.dist[2]]),
+                        c: teen.w
+                    };
+                },
+                // 21. Numbers 1 to 100: Simple addition in English
+                function() {
+                    var ops = window.pick([
+                        { q: "twenty + thirty", r: "fifty", dist: ["forty", "sixty", "seventy"] },
+                        { q: "forty + forty", r: "eighty", dist: ["seventy", "ninety", "one hundred"] },
+                        { q: "ten + sixty", r: "seventy", dist: ["eighty", "sixty", "fifty"] },
+                        { q: "fifty + fifty", r: "one hundred", dist: ["ninety", "eighty", "sixty"] },
+                        { q: "thirty + ten", r: "forty", dist: ["thirty", "fifty", "twenty"] }
+                    ]);
+                    return {
+                        q: 'Resuelva la operación matemática en inglés: "' + ops.q + ' = ?". ¿Cuál es el resultado escrito?',
+                        o: window.shuffle([ops.r, ops.dist[0], ops.dist[1], ops.dist[2]]),
+                        c: ops.r
+                    };
+                },
+                // 22. Numbers 1 to 100: Number sequence
+                function() {
+                    var seq = window.pick([
+                        { s: "ten, twenty, thirty, forty, _______", r: "fifty", dist: ["sixty", "fifteen", "forty-one"] },
+                        { s: "fifty, sixty, seventy, eighty, _______", r: "ninety", dist: ["one hundred", "eighty-one", "seventy-five"] },
+                        { s: "twenty, twenty-five, thirty, thirty-five, _______", r: "forty", dist: ["fifty", "thirty-six", "forty-five"] }
+                    ]);
+                    return {
+                        q: 'Complete la serie numérica en inglés: "' + seq.s + '". ¿Cuál número sigue?',
+                        o: window.shuffle([seq.r, seq.dist[0], seq.dist[1], seq.dist[2]]),
+                        c: seq.r
+                    };
+                },
+                // 23. Community places & services combined
+                function() {
+                    var k = window.pick(KIDS);
+                    return {
+                        q: k + ' necesita consultar el saldo de su alcancía de ahorros en un lugar seguro. ¿A cuál lugar de la comunidad acude y qué recibe?',
+                        o: ["Bank, which provides a financial service", "Bakery, which provides fresh goods", "Hospital, which sells goods", "Park, which provides goods"],
+                        c: "Bank, which provides a financial service"
+                    };
+                },
+                // 24. Prepositions: Location context on an avenue
+                function() {
+                    var k = window.pick(KIDS);
+                    return {
+                        q: 'En el pueblo, el supermercado está en la acera norte y la farmacia está en la acera sur, directamente una frente a la otra cruzando la calle. Complete: "The supermarket is __________ the pharmacy."',
+                        o: ["opposite", "behind", "between", "next to"],
+                        c: "opposite"
+                    };
+                },
+                // 25. Numbers 1 to 100: Counting items
+                function() {
+                    var n = window.randInt(61, 79);
+                    var tensWord = "seventy";
+                    var unitWords = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+                    if (n < 70) {
+                        tensWord = "sixty";
+                    }
+                    var remainder = n % 10;
+                    var word = remainder === 0 ? tensWord : (tensWord + "-" + unitWords[remainder]);
+                    var fake1 = tensWord + "-" + unitWords[(remainder + 2) % 9 + 1];
+                    var fake2 = (tensWord === "sixty" ? "seventy" : "eighty") + "-" + unitWords[remainder || 1];
+                    var fake3 = tensWord + "teen";
+
+                    return {
+                        q: 'En el almacén comunal hay un total de ' + n + ' cajas de leche empacadas. ¿Cómo se escribe el número ' + n + ' en inglés?',
+                        o: window.shuffle([word, fake1, fake2, fake3]),
+                        c: word
+                    };
                 }
             ]
         };
@@ -846,7 +1069,7 @@
                                  "REGLAS:\n" +
                                  "1. Nivel analítico y retador para 3er grado de primaria según el temario oficial del MEP.\n" +
                                  "2. " + excludeText + "\n" +
-                                 "3. Si es Inglés, el enunciado debe estar en español y las opciones/respuesta en inglés.\n" +
+                                 "3. Si es Inglés, el enunciado debe estar en español y las opciones/respuesta en inglés sobre: Getting around town (community places, prepositions of location: between, behind, next to, opposite, in front of, goods and services), and numbers from 1 to 100. ESTÁ ESTRICTAMENTE PROHIBIDO incluir efemérides, holidays o celebraciones de Costa Rica.\n" +
                                  "4. Salida en formato JSON estricto con arreglo 'questions' conteniendo {q, o, c}.\n" +
                                  "Código de variedad única: [" + sessionSalt + "].";
                     
